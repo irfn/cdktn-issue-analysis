@@ -1,5 +1,23 @@
 # Terraform Upgrade & Version Compatibility Issues
 
+*See also: [Maintainers-Priority-Issues.md](./Maintainers-Priority-Issues.md) | [Documentation-Issues.md](./Documentation-Issues.md) | [Most-Discussed-Issues.md](./Most-Discussed-Issues.md)*
+
+---
+
+## Current Version Status
+
+| Version | Status |
+|---------|--------|
+| **CDKTF Default** | Terraform 1.6.5 |
+| **CDKTF Tested** | 1.5.5, 1.6.5 |
+| **CDKTF Available** | 1.1.9 - 1.6.5 |
+| **Latest Terraform** | v1.14.3 (Dec 2025) |
+| **Version Gap** | **8 major versions behind** (1.7 - 1.14) |
+
+This gap means CDKTF users cannot leverage features from Terraform 1.7+, including `removed` blocks, provider functions, and ephemeral resources.
+
+---
+
 ## Summary
 
 **14 issues** related to Terraform upgrades and version compatibility (excluding docs).

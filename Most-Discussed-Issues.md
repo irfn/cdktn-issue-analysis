@@ -1,8 +1,12 @@
 # Most Discussed Issues
 
-## Summary
-
 Issues ranked by comment count, indicating community interest and/or complexity.
+
+*See also: [Maintainers-Priority-Issues.md](./Maintainers-Priority-Issues.md) | [Terraform-Upgrade-Issues.md](./Terraform-Upgrade-Issues.md) | [Documentation-Issues.md](./Documentation-Issues.md)*
+
+---
+
+## Summary
 
 **Themes from High Discussion Issues:**
 1. **Programmatic API** - Strong demand for CLI/programmatic interaction ([#237](https://github.com/hashicorp/terraform-cdk/issues/237), [#682](https://github.com/hashicorp/terraform-cdk/issues/682))

@@ -14,6 +14,8 @@
 
 *Documentation issues (65) tracked separately in [Documentation-Issues.md](./Documentation-Issues.md)*
 
+*Terraform version compatibility issues tracked in [Terraform-Upgrade-Issues.md](./Terraform-Upgrade-Issues.md)* — CDKTF supports up to Terraform 1.6.5, but latest is v1.14.3 (8 versions behind).
+
 ## Priority Tiers
 
 ### Tier 1: `priority/important-soon` (2 non-docs issues) - MIGRATE IMMEDIATELY
@@ -66,7 +68,7 @@ Notable bugs to consider:
 ## Files Saved for Analysis
 
 ```
-./issue-analysis/
+./issue-analysis/data/
 ├── all-open-issues.json              # All 380 open issues
 ├── label-summary.json                # Label distribution
 ├── priority-important-soon.json      # 4 highest priority issues
