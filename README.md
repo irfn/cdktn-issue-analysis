@@ -13,6 +13,7 @@
 | Metric | Count |
 |--------|-------|
 | Total Open Issues | 380 |
+| Total Open PRs | 12 |
 | Maintainer Prioritized | 215 |
 | Documentation Issues | 65 |
 | Language-Specific Issues | 29 |
@@ -36,6 +37,17 @@
 | **Tier 3** | Important Longterm | 7+ | Medium priority |
 | **Tier 4** | Backlog | ~50 | Lower priority |
 | **Skip** | Stale/Not Needed | ~60 | Verify or skip |
+
+### Open PRs Summary
+
+| Category | Count | Key PRs |
+|----------|-------|---------|
+| Fixes Priority Issues | 4 | [#3920](https://github.com/hashicorp/terraform-cdk/pull/3920) (important-soon), [#3928](https://github.com/hashicorp/terraform-cdk/pull/3928), [#3925](https://github.com/hashicorp/terraform-cdk/pull/3925), [#3934](https://github.com/hashicorp/terraform-cdk/pull/3934) |
+| Other Bug Fixes | 4 | StringMapMap, Go 1.24, hclOutput, DEP0044 |
+| Maintenance/Deps | 3 | Copyright headers, Security CVE, GitHub Actions |
+| Documentation | 1 | Conditional example |
+
+See [Open-PRs-Analysis.md](./Open-PRs-Analysis.md) for full details.
 
 ### Language Distribution
 
@@ -84,6 +96,22 @@ See [Terraform-Upgrade-Issues.md](./Terraform-Upgrade-Issues.md) for full detail
 ---
 
 ## Analysis Documents
+
+### [Open-PRs-Analysis.md](./Open-PRs-Analysis.md)
+
+Open PRs awaiting merge at time of archival.
+
+**Key findings:**
+- 12 total open PRs
+- 4 PRs fix issues in our priority lists
+- PR [#3920](https://github.com/hashicorp/terraform-cdk/pull/3920) fixes important-soon issue [#3698](https://github.com/hashicorp/terraform-cdk/issues/3698)
+- PR [#3925](https://github.com/hashicorp/terraform-cdk/pull/3925) fixes 15-comment pipenv issue + adds Poetry/UV support
+
+**Immediate actions:**
+- Cherry-pick/merge PRs [#3920](https://github.com/hashicorp/terraform-cdk/pull/3920), [#3928](https://github.com/hashicorp/terraform-cdk/pull/3928), [#3925](https://github.com/hashicorp/terraform-cdk/pull/3925), [#3934](https://github.com/hashicorp/terraform-cdk/pull/3934)
+- Review security fix [#3946](https://github.com/hashicorp/terraform-cdk/pull/3946)
+
+---
 
 ### [Maintainers-Priority-Issues.md](./Maintainers-Priority-Issues.md)
 
@@ -231,6 +259,7 @@ See [Issues-Likely-Not-Needed.md](./Issues-Likely-Not-Needed.md) for detailed an
 ```
 ./issue-analysis/
 ├── README.md                         # This file
+├── Open-PRs-Analysis.md              # Open PRs analysis
 ├── Maintainers-Priority-Issues.md    # Priority-labeled issues
 ├── Terraform-Upgrade-Issues.md       # Upgrade/version issues
 ├── Documentation-Issues.md           # Documentation issues
@@ -238,6 +267,7 @@ See [Issues-Likely-Not-Needed.md](./Issues-Likely-Not-Needed.md) for detailed an
 ├── Issues-Likely-Not-Needed.md       # Issues to skip or verify
 └── data/
     ├── all-open-issues.json          # All 380 open issues (raw)
+    ├── all-open-prs.json             # All 12 open PRs (raw)
     ├── label-summary.json            # Label distribution
     ├── priority-important-soon.json  # 4 highest priority
     ├── priority-important-longterm.json # 113 important-longterm
@@ -257,21 +287,23 @@ See [Issues-Likely-Not-Needed.md](./Issues-Likely-Not-Needed.md) for detailed an
 ## Next Steps
 
 ### Immediate Actions
-1. **Create Tier 1 issues in cdk-terrain** - 4 critical/blocking issues
-2. **Address Terraform version gap** - Support TF 1.7+ features (removed block, provider functions, ephemeral resources)
-3. **Implement OpenTofu support** ([#3593](https://github.com/hashicorp/terraform-cdk/issues/3593)) - Strategic differentiator for the fork
+1. **Merge/cherry-pick priority PRs** - [#3920](https://github.com/hashicorp/terraform-cdk/pull/3920), [#3928](https://github.com/hashicorp/terraform-cdk/pull/3928), [#3925](https://github.com/hashicorp/terraform-cdk/pull/3925), [#3934](https://github.com/hashicorp/terraform-cdk/pull/3934)
+2. **Create Tier 1 issues in cdk-terrain** - 4 critical/blocking issues
+3. **Address Terraform version gap** - Support TF 1.7+ features (removed block, provider functions, ephemeral resources)
+4. **Implement OpenTofu support** ([#3593](https://github.com/hashicorp/terraform-cdk/issues/3593)) - Strategic differentiator for the fork
 
 ### Short-term
-4. **Fix cross-stack dependency bugs** ([#2157](https://github.com/hashicorp/terraform-cdk/issues/2157), [#2662](https://github.com/hashicorp/terraform-cdk/issues/2662), [#2976](https://github.com/hashicorp/terraform-cdk/issues/2976)) - Major pain point
-5. **Fix testing framework** ([#1850](https://github.com/hashicorp/terraform-cdk/issues/1850), [#3538](https://github.com/hashicorp/terraform-cdk/issues/3538)) - Developer experience
-6. **Set up documentation infrastructure** for migrated docs
+5. **Fix cross-stack dependency bugs** ([#2157](https://github.com/hashicorp/terraform-cdk/issues/2157), [#2662](https://github.com/hashicorp/terraform-cdk/issues/2662), [#2976](https://github.com/hashicorp/terraform-cdk/issues/2976)) - Major pain point
+6. **Fix testing framework** ([#1850](https://github.com/hashicorp/terraform-cdk/issues/1850), [#3538](https://github.com/hashicorp/terraform-cdk/issues/3538)) - Developer experience
+7. **Set up documentation infrastructure** for migrated docs
 
 ### Medium-term
-7. **Triage unprioritized issues** (165 issues) for relevance
-8. **Coordinate with JSII upstream** on blocked issues ([#2800](https://github.com/hashicorp/terraform-cdk/issues/2800))
-9. **Decide on Terraform Cloud support** - Affects ~7 issues
+8. **Triage unprioritized issues** (165 issues) for relevance
+9. **Coordinate with JSII upstream** on blocked issues ([#2800](https://github.com/hashicorp/terraform-cdk/issues/2800))
+10. **Decide on Terraform Cloud support** - Affects ~7 issues
 
 ### Notes
+- **4 PRs ready for merge** - Fix priority issues immediately
 - Total recommended migrations: ~70 issues (Tier 1-3)
 - ~60 issues can likely be skipped or need verification first
 - ~165 unprioritized issues need triage
