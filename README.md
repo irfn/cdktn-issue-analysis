@@ -1,7 +1,9 @@
 # terraform-cdk Issue Analysis for cdk-terrain Migration
 
 **Source:** https://github.com/hashicorp/terraform-cdk (archived)
+
 **Target:** https://github.com/open-constructs/cdk-terrain
+
 **Analysis Date:** 2026-01-15
 
 ---
