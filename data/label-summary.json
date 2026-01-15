@@ -1,0 +1,294 @@
+[
+  {
+    "label": "enhancement",
+    "count": 167
+  },
+  {
+    "label": "bug",
+    "count": 152
+  },
+  {
+    "label": "priority/important-longterm",
+    "count": 113
+  },
+  {
+    "label": "priority/backlog",
+    "count": 98
+  },
+  {
+    "label": "new",
+    "count": 93
+  },
+  {
+    "label": "documentation",
+    "count": 65
+  },
+  {
+    "label": "size/medium",
+    "count": 52
+  },
+  {
+    "label": "cdktf",
+    "count": 50
+  },
+  {
+    "label": "cdktf-cli",
+    "count": 43
+  },
+  {
+    "label": "help wanted",
+    "count": 40
+  },
+  {
+    "label": "size/small",
+    "count": 39
+  },
+  {
+    "label": "priority/awaiting-more-evidence",
+    "count": 35
+  },
+  {
+    "label": "ux/configuration",
+    "count": 29
+  },
+  {
+    "label": "bug/has-workaround",
+    "count": 28
+  },
+  {
+    "label": "pre-built providers",
+    "count": 21
+  },
+  {
+    "label": "tech-debt",
+    "count": 20
+  },
+  {
+    "label": "size/large",
+    "count": 19
+  },
+  {
+    "label": "ux/cli",
+    "count": 19
+  },
+  {
+    "label": "needs-research",
+    "count": 18
+  },
+  {
+    "label": "feature/convert",
+    "count": 17
+  },
+  {
+    "label": "provider get / generation",
+    "count": 16
+  },
+  {
+    "label": "testing",
+    "count": 16
+  },
+  {
+    "label": "language/python",
+    "count": 14
+  },
+  {
+    "label": "good first issue",
+    "count": 11
+  },
+  {
+    "label": "ux/debugging",
+    "count": 11
+  },
+  {
+    "label": "core-parity",
+    "count": 10
+  },
+  {
+    "label": "modules",
+    "count": 10
+  },
+  {
+    "label": "providers",
+    "count": 10
+  },
+  {
+    "label": "feature/init",
+    "count": 9
+  },
+  {
+    "label": "feature/tokens",
+    "count": 9
+  },
+  {
+    "label": "language/golang",
+    "count": 9
+  },
+  {
+    "label": "feature/multi-stack",
+    "count": 8
+  },
+  {
+    "label": "confirmed",
+    "count": 7
+  },
+  {
+    "label": "dev-process",
+    "count": 7
+  },
+  {
+    "label": "language/c#",
+    "count": 7
+  },
+  {
+    "label": "upstream/jsii",
+    "count": 7
+  },
+  {
+    "label": "ux/integration",
+    "count": 7
+  },
+  {
+    "label": "cli/provider-subcommands",
+    "count": 6
+  },
+  {
+    "label": "enhancement/new-workflow",
+    "count": 6
+  },
+  {
+    "label": "examples",
+    "count": 6
+  },
+  {
+    "label": "feature/watch",
+    "count": 5
+  },
+  {
+    "label": "terraform cloud",
+    "count": 5
+  },
+  {
+    "label": "windows",
+    "count": 5
+  },
+  {
+    "label": "documentation/learn-tutorials",
+    "count": 4
+  },
+  {
+    "label": "feature/iterators",
+    "count": 4
+  },
+  {
+    "label": "feature/programmatic-api",
+    "count": 4
+  },
+  {
+    "label": "language/java",
+    "count": 4
+  },
+  {
+    "label": "priority/important-soon",
+    "count": 4
+  },
+  {
+    "label": "abstractions (level 2 / level 3)",
+    "count": 3
+  },
+  {
+    "label": "feature/dynamic-terraform",
+    "count": 3
+  },
+  {
+    "label": "feature/integration-test",
+    "count": 3
+  },
+  {
+    "label": "feature/snapshot-test",
+    "count": 3
+  },
+  {
+    "label": "feature/terraform-functions",
+    "count": 3
+  },
+  {
+    "label": "needs-reproduction",
+    "count": 3
+  },
+  {
+    "label": "notice",
+    "count": 3
+  },
+  {
+    "label": "performance",
+    "count": 3
+  },
+  {
+    "label": "feature/cdktf-as-module-source",
+    "count": 2
+  },
+  {
+    "label": "feature/telemetry",
+    "count": 2
+  },
+  {
+    "label": "language/typescript",
+    "count": 2
+  },
+  {
+    "label": "needs-priority",
+    "count": 2
+  },
+  {
+    "label": "planning/placeholder",
+    "count": 2
+  },
+  {
+    "label": "provider/aws",
+    "count": 2
+  },
+  {
+    "label": "theme/construct-ecosystem",
+    "count": 2
+  },
+  {
+    "label": "build",
+    "count": 1
+  },
+  {
+    "label": "dependencies",
+    "count": 1
+  },
+  {
+    "label": "enterprise",
+    "count": 1
+  },
+  {
+    "label": "legal",
+    "count": 1
+  },
+  {
+    "label": "provider/azure",
+    "count": 1
+  },
+  {
+    "label": "size/x-large",
+    "count": 1
+  },
+  {
+    "label": "upstream/registry",
+    "count": 1
+  },
+  {
+    "label": "upstream/terraform",
+    "count": 1
+  },
+  {
+    "label": "upstream/terraform-provider",
+    "count": 1
+  },
+  {
+    "label": "waiting-for-3rd-party-fix",
+    "count": 1
+  }
+]

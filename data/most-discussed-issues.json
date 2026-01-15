@@ -1,0 +1,612 @@
+[
+  {
+    "number": 376,
+    "title": "`terraform.workspace` equivalent",
+    "comments": 17,
+    "labels": [
+      "enhancement",
+      "priority/backlog",
+      "core-parity",
+      "feature/tokens"
+    ],
+    "created": "2020-09-18"
+  },
+  {
+    "number": 237,
+    "title": "API to interact with terraform cli",
+    "comments": 17,
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "size/large",
+      "ux/integration",
+      "feature/programmatic-api"
+    ],
+    "created": "2020-07-23"
+  },
+  {
+    "number": 2321,
+    "title": "cdktf tries to use pipenv even tho I have removed it from cdktf.json",
+    "comments": 15,
+    "labels": [
+      "bug",
+      "help wanted",
+      "language/python",
+      "priority/backlog",
+      "size/medium",
+      "cli/provider-subcommands"
+    ],
+    "created": "2022-11-18"
+  },
+  {
+    "number": 2235,
+    "title": "Inconsistent UX for multi-stack cdktf commands",
+    "comments": 14,
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "feature/multi-stack",
+      "size/small"
+    ],
+    "created": "2022-10-31"
+  },
+  {
+    "number": 1850,
+    "title": "Unit testing - toHaveResource() - found no resources instead",
+    "comments": 14,
+    "labels": [
+      "bug",
+      "testing",
+      "priority/important-longterm",
+      "ux/debugging",
+      "size/small",
+      "feature/init"
+    ],
+    "created": "2022-06-07"
+  },
+  {
+    "number": 1686,
+    "title": "Higher level Constructs",
+    "comments": 13,
+    "labels": [
+      "enhancement",
+      "help wanted",
+      "abstractions (level 2 / level 3)",
+      "priority/backlog"
+    ],
+    "created": "2022-04-05"
+  },
+  {
+    "number": 838,
+    "title": "Using CDK to manage multiple Stacks generated separately ? ",
+    "comments": 13,
+    "labels": [
+      "documentation",
+      "enhancement",
+      "needs-research",
+      "priority/backlog",
+      "enhancement/new-workflow"
+    ],
+    "created": "2021-07-20"
+  },
+  {
+    "number": 294,
+    "title": "State locking and how to handle it",
+    "comments": 12,
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "core-parity",
+      "size/medium"
+    ],
+    "created": "2020-08-07"
+  },
+  {
+    "number": 2535,
+    "title": "Passing backend config through `TerraformVariable`s is not supported by Terraform",
+    "comments": 10,
+    "labels": [
+      "bug",
+      "documentation",
+      "cdktf",
+      "priority/important-soon",
+      "ux/configuration"
+    ],
+    "created": "2023-01-25"
+  },
+  {
+    "number": 3640,
+    "title": "DeprecationWarning: The `punycode` module is deprecated",
+    "comments": 9,
+    "labels": [
+      "bug",
+      "priority/important-soon"
+    ],
+    "created": "2024-06-04"
+  },
+  {
+    "number": 1660,
+    "title": "Support ECMAScript modules (ESM) in CDKTF projects",
+    "comments": 9,
+    "labels": [
+      "enhancement",
+      "language/typescript",
+      "priority/awaiting-more-evidence"
+    ],
+    "created": "2022-03-25"
+  },
+  {
+    "number": 1641,
+    "title": "Resource FQN tokens aren't resolved in a user friendly way",
+    "comments": 9,
+    "labels": [
+      "bug",
+      "cdktf",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/large"
+    ],
+    "created": "2022-03-22"
+  },
+  {
+    "number": 1528,
+    "title": "Number attributes not synthed as references",
+    "comments": 9,
+    "labels": [
+      "bug",
+      "help wanted",
+      "cdktf",
+      "priority/backlog",
+      "size/medium",
+      "feature/tokens",
+      "bug/has-workaround"
+    ],
+    "created": "2022-01-31"
+  },
+  {
+    "number": 432,
+    "title": "More examples using inheritance in Python for CDKTF",
+    "comments": 9,
+    "labels": [
+      "documentation",
+      "enhancement",
+      "good first issue",
+      "language/python",
+      "priority/backlog",
+      "size/small"
+    ],
+    "created": "2020-11-18"
+  },
+  {
+    "number": 2160,
+    "title": "[Notice] Breaking Change in CDKTF 0.13",
+    "comments": 8,
+    "labels": [
+      "providers",
+      "pre-built providers",
+      "notice",
+      "performance"
+    ],
+    "created": "2022-10-03"
+  },
+  {
+    "number": 1093,
+    "title": "Design CDK for Terraform integration testing",
+    "comments": 8,
+    "labels": [
+      "enhancement",
+      "needs-research",
+      "priority/important-longterm",
+      "size/large",
+      "feature/integration-test"
+    ],
+    "created": "2021-09-28"
+  },
+  {
+    "number": 705,
+    "title": "~Unable to initialize cdktf project in pycharm with venv activated",
+    "comments": 8,
+    "labels": [
+      "bug",
+      "language/python",
+      "priority/awaiting-more-evidence"
+    ],
+    "created": "2021-05-14"
+  },
+  {
+    "number": 231,
+    "title": "Transform Modules to Constructs",
+    "comments": 8,
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "feature/convert",
+      "theme/construct-ecosystem"
+    ],
+    "created": "2020-07-22"
+  },
+  {
+    "number": 3753,
+    "title": "Providers of Large Size: Import is very slow in Python",
+    "comments": 7,
+    "labels": [
+      "bug",
+      "pre-built providers"
+    ],
+    "created": "2024-10-25"
+  },
+  {
+    "number": 3641,
+    "title": "Prebuild binary missing for platform linux",
+    "comments": 7,
+    "labels": [
+      "bug",
+      "cdktf-cli",
+      "priority/important-longterm"
+    ],
+    "created": "2024-06-04"
+  },
+  {
+    "number": 3621,
+    "title": "cdktf: synth --hcl fails to render false(bool), 0(int), \"\"(empty string) ",
+    "comments": 7,
+    "labels": [
+      "bug",
+      "needs-reproduction"
+    ],
+    "created": "2024-05-15"
+  },
+  {
+    "number": 3206,
+    "title": "One stack failure when deploying multiple stack in parallel causes other stacks state to remain locked",
+    "comments": 7,
+    "labels": [
+      "bug",
+      "feature/multi-stack"
+    ],
+    "created": "2023-10-27"
+  },
+  {
+    "number": 918,
+    "title": "How multiple team members can use terraform CDKTF Project in a shared way",
+    "comments": 7,
+    "labels": [
+      "documentation",
+      "needs-research",
+      "priority/important-longterm"
+    ],
+    "created": "2021-08-18"
+  },
+  {
+    "number": 798,
+    "title": "Reduce/document differences between cdktf synth and running app directly",
+    "comments": 7,
+    "labels": [
+      "documentation",
+      "enhancement",
+      "needs-research",
+      "priority/important-longterm"
+    ],
+    "created": "2021-06-24"
+  },
+  {
+    "number": 682,
+    "title": "Lifecycle Hooks",
+    "comments": 7,
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "size/medium",
+      "ux/integration",
+      "feature/programmatic-api"
+    ],
+    "created": "2021-05-04"
+  },
+  {
+    "number": 3929,
+    "title": "aws: Error: Pre-built provider information not found",
+    "comments": 6,
+    "labels": [
+      "bug",
+      "new",
+      "pre-built providers"
+    ],
+    "created": "2025-09-16"
+  },
+  {
+    "number": 3774,
+    "title": "azurerm: AzurermProviderFeatures Value is not an array",
+    "comments": 6,
+    "labels": [
+      "bug",
+      "new",
+      "pre-built providers"
+    ],
+    "created": "2024-11-20"
+  },
+  {
+    "number": 2939,
+    "title": "Testing: `toBeValidTerraform()` fails with \"random\" error messages",
+    "comments": 6,
+    "labels": [
+      "bug",
+      "testing",
+      "priority/awaiting-more-evidence"
+    ],
+    "created": "2023-06-14"
+  },
+  {
+    "number": 2835,
+    "title": "Allow partial PyPi installs for cdktf-cdktf-provider-aws",
+    "comments": 6,
+    "labels": [
+      "enhancement",
+      "language/python",
+      "priority/awaiting-more-evidence",
+      "pre-built providers"
+    ],
+    "created": "2023-04-24"
+  },
+  {
+    "number": 2658,
+    "title": "New token is generated each time a property is accessed",
+    "comments": 6,
+    "labels": [
+      "enhancement",
+      "priority/awaiting-more-evidence",
+      "provider get / generation",
+      "feature/tokens"
+    ],
+    "created": "2023-02-15"
+  },
+  {
+    "number": 2334,
+    "title": "Inconsistent behaviour of `dependsOn` if set via initial resource config vs. via `resource.dependsOn`",
+    "comments": 6,
+    "labels": [
+      "documentation",
+      "enhancement",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/medium"
+    ],
+    "created": "2022-11-22"
+  },
+  {
+    "number": 2157,
+    "title": "Unable to perform cdktf diff when using multiple stacks with inter-stack dependencies",
+    "comments": 6,
+    "labels": [
+      "bug",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "ux/cli",
+      "feature/multi-stack",
+      "size/large",
+      "upstream/terraform"
+    ],
+    "created": "2022-10-02"
+  },
+  {
+    "number": 1518,
+    "title": "Empty provider configuration blocks are not required warning when using generated json as a module",
+    "comments": 6,
+    "labels": [
+      "bug",
+      "cdktf",
+      "priority/awaiting-more-evidence",
+      "feature/cdktf-as-module-source"
+    ],
+    "created": "2022-01-27"
+  },
+  {
+    "number": 3737,
+    "title": "COMPONENT: CDKTF fetching providers on every deploy",
+    "comments": 5,
+    "labels": [
+      "bug"
+    ],
+    "created": "2024-10-02"
+  },
+  {
+    "number": 3532,
+    "title": "lifecycle: replaceTriggeredBy should not be a string interpolation",
+    "comments": 5,
+    "labels": [
+      "bug",
+      "cdktf",
+      "priority/important-longterm",
+      "bug/has-workaround"
+    ],
+    "created": "2024-03-03"
+  },
+  {
+    "number": 3290,
+    "title": "cdktf: construct name should be unique per resource type [same as terraform]",
+    "comments": 5,
+    "labels": [
+      "enhancement",
+      "priority/backlog",
+      "ux/configuration"
+    ],
+    "created": "2023-11-23"
+  },
+  {
+    "number": 3187,
+    "title": "cdktf is unable to resolve AWS local credentials",
+    "comments": 5,
+    "labels": [
+      "bug",
+      "needs-reproduction"
+    ],
+    "created": "2023-10-12"
+  },
+  {
+    "number": 2968,
+    "title": "CDKTF Get: Spawns many instances of node until memory runs out",
+    "comments": 5,
+    "labels": [
+      "bug",
+      "priority/awaiting-more-evidence",
+      "provider get / generation",
+      "bug/has-workaround"
+    ],
+    "created": "2023-06-26"
+  },
+  {
+    "number": 2568,
+    "title": "CDKTF support for multiple applications",
+    "comments": 5,
+    "labels": [
+      "documentation",
+      "enhancement",
+      "priority/backlog",
+      "ux/configuration"
+    ],
+    "created": "2023-02-01"
+  },
+  {
+    "number": 2488,
+    "title": "Install cdktf-cli as part of TS template instead of relying on global installation",
+    "comments": 5,
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "size/small"
+    ],
+    "created": "2023-01-14"
+  },
+  {
+    "number": 2019,
+    "title": "Specifying context values in the CDKTF CLI",
+    "comments": 5,
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/backlog",
+      "ux/configuration",
+      "ux/cli",
+      "size/medium"
+    ],
+    "created": "2022-08-11"
+  },
+  {
+    "number": 1811,
+    "title": "Human error-prone CLI",
+    "comments": 5,
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/awaiting-more-evidence",
+      "ux/cli"
+    ],
+    "created": "2022-05-20"
+  },
+  {
+    "number": 1730,
+    "title": "Improve S3 Bucket Deployments for Web Apps",
+    "comments": 5,
+    "labels": [
+      "enhancement",
+      "help wanted",
+      "cdktf",
+      "needs-research",
+      "priority/backlog",
+      "enhancement/new-workflow"
+    ],
+    "created": "2022-04-19"
+  },
+  {
+    "number": 1659,
+    "title": "Can Not Deref Tags from another Object during creation",
+    "comments": 5,
+    "labels": [
+      "documentation",
+      "enhancement",
+      "cdktf",
+      "priority/backlog",
+      "ux/configuration",
+      "feature/dynamic-terraform"
+    ],
+    "created": "2022-03-25"
+  },
+  {
+    "number": 1644,
+    "title": "Option to disable creation of assets for local modules",
+    "comments": 5,
+    "labels": [
+      "enhancement",
+      "modules",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/small"
+    ],
+    "created": "2022-03-23"
+  },
+  {
+    "number": 1631,
+    "title": "Make TerraformHclModule more beginner friendly — Request for docs",
+    "comments": 5,
+    "labels": [
+      "documentation",
+      "modules",
+      "cdktf",
+      "priority/important-longterm"
+    ],
+    "created": "2022-03-21"
+  },
+  {
+    "number": 1506,
+    "title": "Unit testing failing to find resources for azurerm provider",
+    "comments": 5,
+    "labels": [
+      "bug",
+      "help wanted",
+      "windows",
+      "testing",
+      "priority/backlog",
+      "size/medium",
+      "feature/snapshot-test",
+      "bug/has-workaround"
+    ],
+    "created": "2022-01-24"
+  },
+  {
+    "number": 1115,
+    "title": "Error produced by cdktf get is not breaking docker build",
+    "comments": 5,
+    "labels": [
+      "bug",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "size/medium"
+    ],
+    "created": "2021-10-04"
+  },
+  {
+    "number": 909,
+    "title": "Unable to run on M1 with asdf-vm due to failed provider installation",
+    "comments": 5,
+    "labels": [
+      "enhancement",
+      "priority/awaiting-more-evidence"
+    ],
+    "created": "2021-08-13"
+  },
+  {
+    "number": 824,
+    "title": "Provide Common Temporary Directory ",
+    "comments": 5,
+    "labels": [
+      "enhancement",
+      "good first issue",
+      "cdktf",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/small"
+    ],
+    "created": "2021-07-08"
+  }
+]

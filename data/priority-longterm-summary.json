@@ -1,0 +1,1284 @@
+[
+  {
+    "number": 231,
+    "title": "Transform Modules to Constructs",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "feature/convert",
+      "theme/construct-ecosystem"
+    ],
+    "created": "2020-07-22"
+  },
+  {
+    "number": 237,
+    "title": "API to interact with terraform cli",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "size/large",
+      "ux/integration",
+      "feature/programmatic-api"
+    ],
+    "created": "2020-07-23"
+  },
+  {
+    "number": 294,
+    "title": "State locking and how to handle it",
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "core-parity",
+      "size/medium"
+    ],
+    "created": "2020-08-07"
+  },
+  {
+    "number": 304,
+    "title": "DOC: is there any API/DOC for providers maintainer to support terraform-cdk?",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "size/medium"
+    ],
+    "created": "2020-08-13"
+  },
+  {
+    "number": 435,
+    "title": "Making cdktf dynamic",
+    "labels": [
+      "enhancement",
+      "needs-research",
+      "priority/important-longterm"
+    ],
+    "created": "2020-11-19"
+  },
+  {
+    "number": 526,
+    "title": "Improve cdktf upgrade documentation.",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "size/small"
+    ],
+    "created": "2021-01-27"
+  },
+  {
+    "number": 558,
+    "title": "Testing Modules and Providers",
+    "labels": [
+      "modules",
+      "providers",
+      "testing",
+      "priority/important-longterm",
+      "tech-debt"
+    ],
+    "created": "2021-02-11"
+  },
+  {
+    "number": 575,
+    "title": "Align Data Source Names with Resource Name Schema",
+    "labels": [
+      "enhancement",
+      "providers",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/medium"
+    ],
+    "created": "2021-02-19"
+  },
+  {
+    "number": 660,
+    "title": "Custom Data Source",
+    "labels": [
+      "enhancement",
+      "cdktf",
+      "priority/important-longterm",
+      "size/large",
+      "feature/dynamic-terraform",
+      "ux/integration"
+    ],
+    "created": "2021-04-22"
+  },
+  {
+    "number": 661,
+    "title": "Custom Resources",
+    "labels": [
+      "enhancement",
+      "cdktf",
+      "priority/important-longterm",
+      "size/large",
+      "feature/dynamic-terraform"
+    ],
+    "created": "2021-04-22"
+  },
+  {
+    "number": 682,
+    "title": "Lifecycle Hooks",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "size/medium",
+      "ux/integration",
+      "feature/programmatic-api"
+    ],
+    "created": "2021-05-04"
+  },
+  {
+    "number": 694,
+    "title": "Init: allow users to choose between local and cloud when not setting a cloud ",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "ux/cli",
+      "feature/init"
+    ],
+    "created": "2021-05-07"
+  },
+  {
+    "number": 707,
+    "title": "Providers should know \"allowed\" values where possible",
+    "labels": [
+      "enhancement",
+      "needs-research",
+      "priority/important-longterm",
+      "size/large"
+    ],
+    "created": "2021-05-16"
+  },
+  {
+    "number": 708,
+    "title": "Helper for using local files",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "ux/configuration"
+    ],
+    "created": "2021-05-17"
+  },
+  {
+    "number": 728,
+    "title": "fallback to hashicorp namespace if none is passed in go provider generation",
+    "labels": [
+      "enhancement",
+      "providers",
+      "language/golang",
+      "priority/important-longterm",
+      "core-parity"
+    ],
+    "created": "2021-05-26"
+  },
+  {
+    "number": 775,
+    "title": "Support tainting a resource (or new -replace option)",
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "core-parity"
+    ],
+    "created": "2021-06-11"
+  },
+  {
+    "number": 785,
+    "title": "Add Dependency on Custom Construct",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm"
+    ],
+    "created": "2021-06-18"
+  },
+  {
+    "number": 798,
+    "title": "Reduce/document differences between cdktf synth and running app directly",
+    "labels": [
+      "documentation",
+      "enhancement",
+      "needs-research",
+      "priority/important-longterm"
+    ],
+    "created": "2021-06-24"
+  },
+  {
+    "number": 804,
+    "title": "Public API for Terraform CLI / TF Cloud exec code",
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "size/medium",
+      "feature/programmatic-api"
+    ],
+    "created": "2021-06-29"
+  },
+  {
+    "number": 824,
+    "title": "Provide Common Temporary Directory ",
+    "labels": [
+      "enhancement",
+      "good first issue",
+      "cdktf",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/small"
+    ],
+    "created": "2021-07-08"
+  },
+  {
+    "number": 841,
+    "title": "Telemetry does not get send due to process.exit",
+    "labels": [
+      "bug",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "feature/telemetry"
+    ],
+    "created": "2021-07-22"
+  },
+  {
+    "number": 918,
+    "title": "How multiple team members can use terraform CDKTF Project in a shared way",
+    "labels": [
+      "documentation",
+      "needs-research",
+      "priority/important-longterm"
+    ],
+    "created": "2021-08-18"
+  },
+  {
+    "number": 956,
+    "title": "Add specific example for using private Terraform modules to docs",
+    "labels": [
+      "documentation",
+      "modules",
+      "terraform cloud",
+      "priority/important-longterm",
+      "enterprise",
+      "size/small"
+    ],
+    "created": "2021-09-07"
+  },
+  {
+    "number": 1093,
+    "title": "Design CDK for Terraform integration testing",
+    "labels": [
+      "enhancement",
+      "needs-research",
+      "priority/important-longterm",
+      "size/large",
+      "feature/integration-test"
+    ],
+    "created": "2021-09-28"
+  },
+  {
+    "number": 1096,
+    "title": "Placeholder: implement integration testing",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "size/large",
+      "feature/integration-test",
+      "planning/placeholder"
+    ],
+    "created": "2021-09-29"
+  },
+  {
+    "number": 1104,
+    "title": "Design UX, APIs for procedurally driving CDKTF",
+    "labels": [
+      "enhancement",
+      "needs-research",
+      "priority/important-longterm",
+      "enhancement/new-workflow",
+      "size/medium",
+      "feature/programmatic-api"
+    ],
+    "created": "2021-09-29"
+  },
+  {
+    "number": 1115,
+    "title": "Error produced by cdktf get is not breaking docker build",
+    "labels": [
+      "bug",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "size/medium"
+    ],
+    "created": "2021-10-04"
+  },
+  {
+    "number": 1124,
+    "title": "Test matchers suppress Terraform logs",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "feature/snapshot-test"
+    ],
+    "created": "2021-10-05"
+  },
+  {
+    "number": 1216,
+    "title": "Docs need (security) guidance around `.terraform.lock.hcl`",
+    "labels": [
+      "documentation",
+      "priority/important-longterm"
+    ],
+    "created": "2021-10-27"
+  },
+  {
+    "number": 1268,
+    "title": "API docs: Add docs to Terraform backends",
+    "labels": [
+      "documentation",
+      "good first issue",
+      "cdktf",
+      "priority/important-longterm",
+      "size/medium"
+    ],
+    "created": "2021-11-08"
+  },
+  {
+    "number": 1309,
+    "title": "Validate Terraform code on synth",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "ux/debugging",
+      "size/small"
+    ],
+    "created": "2021-11-16"
+  },
+  {
+    "number": 1313,
+    "title": "Add more documentation about how to work with existing resources (import/alteration)",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "size/medium"
+    ],
+    "created": "2021-11-17"
+  },
+  {
+    "number": 1315,
+    "title": "Rename the help file when running `cdk init` to markdown and/or have a .txt extension to the help file",
+    "labels": [
+      "enhancement",
+      "good first issue",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "size/small",
+      "feature/init"
+    ],
+    "created": "2021-11-17"
+  },
+  {
+    "number": 1349,
+    "title": "synth should fail if a second provider of the same type has no alias",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/small"
+    ],
+    "created": "2021-11-24"
+  },
+  {
+    "number": 1356,
+    "title": "Edge Provider Test: Test passing an entire resource to a Terraform Output",
+    "labels": [
+      "enhancement",
+      "testing",
+      "priority/important-longterm",
+      "size/small",
+      "tech-debt"
+    ],
+    "created": "2021-11-26"
+  },
+  {
+    "number": 1406,
+    "title": "Docs: Add note about `synth` being common term in CDK ecosystem",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "size/small"
+    ],
+    "created": "2021-12-10"
+  },
+  {
+    "number": 1443,
+    "title": "Document data access for modules",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "size/small"
+    ],
+    "created": "2022-01-03"
+  },
+  {
+    "number": 1479,
+    "title": "Warnings the first time synthesizing C# projects: \"Parameter 'config' has no matching param tag...\"",
+    "labels": [
+      "bug",
+      "priority/important-longterm",
+      "language/c#"
+    ],
+    "created": "2022-01-12"
+  },
+  {
+    "number": 1501,
+    "title": "Support nested collections and other ",
+    "labels": [
+      "enhancement",
+      "cdktf",
+      "priority/important-longterm",
+      "provider get / generation"
+    ],
+    "created": "2022-01-21"
+  },
+  {
+    "number": 1616,
+    "title": "Expose API to identify / find constructs in tree",
+    "labels": [
+      "enhancement",
+      "abstractions (level 2 / level 3)",
+      "priority/important-longterm",
+      "size/medium"
+    ],
+    "created": "2022-03-08"
+  },
+  {
+    "number": 1626,
+    "title": "Skip generating empty interfaces for provider bindings",
+    "labels": [
+      "enhancement",
+      "cdktf",
+      "priority/important-longterm",
+      "provider get / generation"
+    ],
+    "created": "2022-03-17"
+  },
+  {
+    "number": 1631,
+    "title": "Make TerraformHclModule more beginner friendly — Request for docs",
+    "labels": [
+      "documentation",
+      "modules",
+      "cdktf",
+      "priority/important-longterm"
+    ],
+    "created": "2022-03-21"
+  },
+  {
+    "number": 1639,
+    "title": "Telemetry: track CLI flags being used",
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "feature/telemetry"
+    ],
+    "created": "2022-03-22"
+  },
+  {
+    "number": 1641,
+    "title": "Resource FQN tokens aren't resolved in a user friendly way",
+    "labels": [
+      "bug",
+      "cdktf",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/large"
+    ],
+    "created": "2022-03-22"
+  },
+  {
+    "number": 1644,
+    "title": "Option to disable creation of assets for local modules",
+    "labels": [
+      "enhancement",
+      "modules",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/small"
+    ],
+    "created": "2022-03-23"
+  },
+  {
+    "number": 1734,
+    "title": "Improve init templates (get rid of string replacing)",
+    "labels": [
+      "enhancement",
+      "terraform cloud",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "size/medium",
+      "feature/init"
+    ],
+    "created": "2022-04-20"
+  },
+  {
+    "number": 1799,
+    "title": "Init: Support all languages from existing terraform project",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "feature/convert",
+      "size/medium",
+      "feature/init"
+    ],
+    "created": "2022-05-12"
+  },
+  {
+    "number": 1829,
+    "title": "Docs: Make clear that `Stack.dependsOn` does not create a depedency between stacks (`addDependency` does)",
+    "labels": [
+      "documentation",
+      "cdktf",
+      "priority/important-longterm",
+      "size/small"
+    ],
+    "created": "2022-05-30"
+  },
+  {
+    "number": 1850,
+    "title": "Unit testing - toHaveResource() - found no resources instead",
+    "labels": [
+      "bug",
+      "testing",
+      "priority/important-longterm",
+      "ux/debugging",
+      "size/small",
+      "feature/init"
+    ],
+    "created": "2022-06-07"
+  },
+  {
+    "number": 1874,
+    "title": "Create GitHub action to create / destroy terraform cloud workspaces",
+    "labels": [
+      "enhancement",
+      "terraform cloud",
+      "priority/important-longterm",
+      "size/medium"
+    ],
+    "created": "2022-06-14"
+  },
+  {
+    "number": 1875,
+    "title": "Represent all maps with generated classes",
+    "labels": [
+      "enhancement",
+      "cdktf",
+      "priority/important-longterm",
+      "provider get / generation",
+      "size/large"
+    ],
+    "created": "2022-06-14"
+  },
+  {
+    "number": 1898,
+    "title": "Azurerm first experience with c# dotnet and typescript",
+    "labels": [
+      "bug",
+      "upstream/jsii",
+      "priority/important-longterm",
+      "ux/debugging",
+      "language/c#",
+      "ux/configuration",
+      "size/large"
+    ],
+    "created": "2022-06-24"
+  },
+  {
+    "number": 1923,
+    "title": "Terraform module input variables & typescript",
+    "labels": [
+      "enhancement",
+      "modules",
+      "priority/important-longterm",
+      "provider get / generation",
+      "size/medium"
+    ],
+    "created": "2022-07-14"
+  },
+  {
+    "number": 1991,
+    "title": "Make our init templates more robust against upstream version changes",
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "size/small",
+      "feature/init"
+    ],
+    "created": "2022-08-03"
+  },
+  {
+    "number": 2031,
+    "title": "cdktf destroy with wildcard characters tries to destroy stacks that has not been deployed and can cause error",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "ux/cli",
+      "feature/multi-stack",
+      "size/medium",
+      "size/large"
+    ],
+    "created": "2022-08-19"
+  },
+  {
+    "number": 2071,
+    "title": "Use DataSources in the examples where possible",
+    "labels": [
+      "documentation",
+      "examples",
+      "priority/important-longterm",
+      "size/small"
+    ],
+    "created": "2022-08-26"
+  },
+  {
+    "number": 2072,
+    "title": "Create examples using modules",
+    "labels": [
+      "documentation",
+      "examples",
+      "priority/important-longterm",
+      "size/medium"
+    ],
+    "created": "2022-08-26"
+  },
+  {
+    "number": 2109,
+    "title": "Explain synth vs execution time on Tokens page",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "size/small",
+      "feature/tokens"
+    ],
+    "created": "2022-09-13"
+  },
+  {
+    "number": 2113,
+    "title": "Allow to ignore files from TerraformAsset",
+    "labels": [
+      "enhancement",
+      "cdktf",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/medium"
+    ],
+    "created": "2022-09-13"
+  },
+  {
+    "number": 2114,
+    "title": "Improve TerraformVariable docs to mention stringValue, numberValue, etc",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "size/small"
+    ],
+    "created": "2022-09-13"
+  },
+  {
+    "number": 2143,
+    "title": "Unmet peer dependencies for the cli",
+    "labels": [
+      "bug",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "ux/cli",
+      "tech-debt"
+    ],
+    "created": "2022-09-27"
+  },
+  {
+    "number": 2157,
+    "title": "Unable to perform cdktf diff when using multiple stacks with inter-stack dependencies",
+    "labels": [
+      "bug",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "ux/cli",
+      "feature/multi-stack",
+      "size/large",
+      "upstream/terraform"
+    ],
+    "created": "2022-10-02"
+  },
+  {
+    "number": 2164,
+    "title": "Re-enable `convertProject.test.ts` test",
+    "labels": [
+      "enhancement",
+      "testing",
+      "priority/important-longterm",
+      "dev-process",
+      "size/small",
+      "tech-debt"
+    ],
+    "created": "2022-10-03"
+  },
+  {
+    "number": 2191,
+    "title": "CDKTF should check if the pre-built providers peer dependency matches the installed cdktf version",
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "ux/cli",
+      "size/medium",
+      "pre-built providers"
+    ],
+    "created": "2022-10-14"
+  },
+  {
+    "number": 2200,
+    "title": "Generate provider lock file before running terraform init",
+    "labels": [
+      "enhancement",
+      "providers",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "ux/cli",
+      "size/medium",
+      "cli/provider-subcommands"
+    ],
+    "created": "2022-10-18"
+  },
+  {
+    "number": 2230,
+    "title": "Support upgrading all used providers at once via `cdktf provider upgrade`",
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "cli/provider-subcommands"
+    ],
+    "created": "2022-10-28"
+  },
+  {
+    "number": 2235,
+    "title": "Inconsistent UX for multi-stack cdktf commands",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "feature/multi-stack",
+      "size/small"
+    ],
+    "created": "2022-10-31"
+  },
+  {
+    "number": 2246,
+    "title": "Support nested iteration (i.e. using `TerraformIterator.dynamic` inside `TerraformIterator.dynamic`)",
+    "labels": [
+      "enhancement",
+      "cdktf",
+      "priority/important-longterm",
+      "core-parity",
+      "size/large",
+      "feature/iterators"
+    ],
+    "created": "2022-11-02"
+  },
+  {
+    "number": 2334,
+    "title": "Inconsistent behaviour of `dependsOn` if set via initial resource config vs. via `resource.dependsOn`",
+    "labels": [
+      "documentation",
+      "enhancement",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/medium"
+    ],
+    "created": "2022-11-22"
+  },
+  {
+    "number": 2340,
+    "title": "Java, missing required field error is unclear",
+    "labels": [
+      "bug",
+      "language/java",
+      "priority/important-longterm",
+      "ux/debugging",
+      "size/large"
+    ],
+    "created": "2022-11-24"
+  },
+  {
+    "number": 2437,
+    "title": "cdktf provider upgrade issues",
+    "labels": [
+      "bug",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "size/medium",
+      "cli/provider-subcommands"
+    ],
+    "created": "2022-12-20"
+  },
+  {
+    "number": 2438,
+    "title": "Add expect matcher for TerraformOutputs",
+    "labels": [
+      "enhancement",
+      "cdktf",
+      "testing",
+      "priority/important-longterm",
+      "feature/snapshot-test"
+    ],
+    "created": "2022-12-20"
+  },
+  {
+    "number": 2515,
+    "title": "Document how to pass a `provider` to a resource",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "ux/configuration"
+    ],
+    "created": "2022-12-29"
+  },
+  {
+    "number": 2470,
+    "title": "Improve debugging by special debugging constructs / functions",
+    "labels": [
+      "enhancement",
+      "cdktf",
+      "priority/important-longterm",
+      "ux/debugging",
+      "size/medium"
+    ],
+    "created": "2023-01-10"
+  },
+  {
+    "number": 2473,
+    "title": "Synth changing TerraformVariable map keys to snake case",
+    "labels": [
+      "bug",
+      "cdktf",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/medium"
+    ],
+    "created": "2023-01-10"
+  },
+  {
+    "number": 2488,
+    "title": "Install cdktf-cli as part of TS template instead of relying on global installation",
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "size/small"
+    ],
+    "created": "2023-01-14"
+  },
+  {
+    "number": 2490,
+    "title": "cdktf-init typescript template general QOL improvements",
+    "labels": [
+      "enhancement",
+      "build",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/medium"
+    ],
+    "created": "2023-01-14"
+  },
+  {
+    "number": 2511,
+    "title": "Document how to use escape hatch with lists",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "size/small"
+    ],
+    "created": "2023-01-18"
+  },
+  {
+    "number": 2513,
+    "title": "Support planning a destroy via `cdktf-cli`",
+    "labels": [
+      "enhancement",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "core-parity"
+    ],
+    "created": "2023-01-18"
+  },
+  {
+    "number": 2518,
+    "title": "Testing: Assert modules being present",
+    "labels": [
+      "enhancement",
+      "testing",
+      "priority/important-longterm",
+      "size/medium"
+    ],
+    "created": "2023-01-20"
+  },
+  {
+    "number": 2548,
+    "title": "Improve list token access error message",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "ux/debugging",
+      "size/medium"
+    ],
+    "created": "2023-01-27"
+  },
+  {
+    "number": 2613,
+    "title": "Documentation: Module outputs may require \"Token typecasting\" when passed e.g. into Terraform functions",
+    "labels": [
+      "documentation",
+      "priority/important-longterm"
+    ],
+    "created": "2023-02-08"
+  },
+  {
+    "number": 2641,
+    "title": "Convert breaking long lines into multiple causes compilation issues in python",
+    "labels": [
+      "bug",
+      "language/python",
+      "priority/important-longterm",
+      "feature/convert"
+    ],
+    "created": "2023-02-14"
+  },
+  {
+    "number": 2662,
+    "title": "Cross Stack Reference Not Working with Modules",
+    "labels": [
+      "bug",
+      "cdktf",
+      "confirmed",
+      "priority/important-longterm",
+      "feature/multi-stack"
+    ],
+    "created": "2023-02-17"
+  },
+  {
+    "number": 2710,
+    "title": "Guide: How to use custom constructs to solve governance problems while writing configuration",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "theme/construct-ecosystem"
+    ],
+    "created": "2023-03-09"
+  },
+  {
+    "number": 2711,
+    "title": "Assets: Add documentation around TerraformCachedAsset",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "size/small"
+    ],
+    "created": "2023-03-09"
+  },
+  {
+    "number": 2746,
+    "title": "cdktf Python - Expose version via Python API",
+    "labels": [
+      "enhancement",
+      "cdktf",
+      "priority/important-longterm",
+      "ux/configuration",
+      "size/small"
+    ],
+    "created": "2023-03-29"
+  },
+  {
+    "number": 2800,
+    "title": "Convert: Nested named structs are not properly addressed (JSII upstream issue)",
+    "labels": [
+      "bug",
+      "language/python",
+      "upstream/jsii",
+      "language/golang",
+      "priority/important-longterm",
+      "language/c#",
+      "feature/convert"
+    ],
+    "created": "2023-04-13"
+  },
+  {
+    "number": 2820,
+    "title": "Convert: Type Coercion adds extra cast due to race condition (variables not being pre-populated)",
+    "labels": [
+      "bug",
+      "priority/important-longterm",
+      "feature/convert"
+    ],
+    "created": "2023-04-19"
+  },
+  {
+    "number": 2824,
+    "title": "Convert: Golang has wrong casing (lower case letters for attributes)",
+    "labels": [
+      "bug",
+      "priority/important-longterm",
+      "feature/convert"
+    ],
+    "created": "2023-04-19"
+  },
+  {
+    "number": 2855,
+    "title": "Error when trying to create a common base class for AWS Provider",
+    "labels": [
+      "bug",
+      "cdktf-cli",
+      "confirmed",
+      "priority/important-longterm"
+    ],
+    "created": "2023-05-02"
+  },
+  {
+    "number": 2867,
+    "title": "(Concepts): new page to document Operators usage",
+    "labels": [
+      "documentation",
+      "priority/important-longterm",
+      "feature/terraform-functions"
+    ],
+    "created": "2023-05-09"
+  },
+  {
+    "number": 2871,
+    "title": "[Python] Testing.synth_scope is broken",
+    "labels": [
+      "bug",
+      "documentation",
+      "testing",
+      "priority/important-longterm"
+    ],
+    "created": "2023-05-11"
+  },
+  {
+    "number": 2877,
+    "title": "Inconsistent behaviour with variables from Terraform Cloud",
+    "labels": [
+      "bug",
+      "terraform cloud",
+      "priority/important-longterm",
+      "ux/integration"
+    ],
+    "created": "2023-05-17"
+  },
+  {
+    "number": 2892,
+    "title": "Allow skipping bugged resources, or allowlist used resources for the imported provider.",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "enhancement/new-workflow",
+      "size/large",
+      "ux/integration",
+      "performance"
+    ],
+    "created": "2023-05-28"
+  },
+  {
+    "number": 2910,
+    "title": "hcl2cdk: getExpressionAst fails with regex strings due to escaping",
+    "labels": [
+      "bug",
+      "priority/important-longterm",
+      "feature/convert",
+      "size/medium"
+    ],
+    "created": "2023-06-01"
+  },
+  {
+    "number": 2912,
+    "title": "hcl2cdk: produces incorrect typescript with mix of quoted and unquoted values",
+    "labels": [
+      "bug",
+      "priority/important-longterm",
+      "feature/convert",
+      "size/medium"
+    ],
+    "created": "2023-06-01"
+  },
+  {
+    "number": 2919,
+    "title": "cdktf-cli: terraform variables passed through --var flag and inter-stack dependencies don't interface nicely",
+    "labels": [
+      "bug",
+      "priority/important-longterm",
+      "ux/cli",
+      "feature/multi-stack"
+    ],
+    "created": "2023-06-05"
+  },
+  {
+    "number": 2976,
+    "title": "CDKTF: Cross stack dependencies fail if placed within a wrapper construct.",
+    "labels": [
+      "bug",
+      "cdktf",
+      "confirmed",
+      "priority/important-longterm",
+      "feature/multi-stack",
+      "size/medium"
+    ],
+    "created": "2023-07-01"
+  },
+  {
+    "number": 2985,
+    "title": "Convert: Some types are typed as `unknown` internally",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "tech-debt"
+    ],
+    "created": "2023-07-05"
+  },
+  {
+    "number": 3061,
+    "title": "Library: improve debugging for untyped languages and incorrect naming",
+    "labels": [
+      "enhancement",
+      "language/python",
+      "upstream/jsii",
+      "priority/important-longterm",
+      "ux/debugging"
+    ],
+    "created": "2023-08-10"
+  },
+  {
+    "number": 3071,
+    "title": "Missing import in the example of using `cdktf` for `typescript`",
+    "labels": [
+      "documentation",
+      "documentation/learn-tutorials",
+      "priority/important-longterm"
+    ],
+    "created": "2023-08-13"
+  },
+  {
+    "number": 3095,
+    "title": "Display correct data format inside document",
+    "labels": [
+      "bug",
+      "documentation",
+      "priority/important-longterm",
+      "provider get / generation",
+      "size/small"
+    ],
+    "created": "2023-08-18"
+  },
+  {
+    "number": 3130,
+    "title": "Module generation for boolean variable should also accept `IResolvable`",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm"
+    ],
+    "created": "2023-09-14"
+  },
+  {
+    "number": 3168,
+    "title": "cdktf provider add --force-remote",
+    "labels": [
+      "enhancement",
+      "priority/important-longterm",
+      "pre-built providers",
+      "cli/provider-subcommands"
+    ],
+    "created": "2023-10-04"
+  },
+  {
+    "number": 3532,
+    "title": "lifecycle: replaceTriggeredBy should not be a string interpolation",
+    "labels": [
+      "bug",
+      "cdktf",
+      "priority/important-longterm",
+      "bug/has-workaround"
+    ],
+    "created": "2024-03-03"
+  },
+  {
+    "number": 3538,
+    "title": "Testing: fullSynth generated incorrect stack is having incoming cross-stack references",
+    "labels": [
+      "bug",
+      "testing",
+      "priority/important-longterm",
+      "bug/has-workaround"
+    ],
+    "created": "2024-03-06"
+  },
+  {
+    "number": 3546,
+    "title": "ReplaceTriggeredBy: Still not working in Golang",
+    "labels": [
+      "bug",
+      "language/golang",
+      "priority/important-longterm",
+      "bug/has-workaround"
+    ],
+    "created": "2024-03-11"
+  },
+  {
+    "number": 3586,
+    "title": "CloudBackend: support environment variables like TF_CLOUD_ORGANIZATION",
+    "labels": [
+      "bug",
+      "terraform cloud",
+      "cdktf",
+      "priority/important-longterm",
+      "bug/has-workaround"
+    ],
+    "created": "2024-04-14"
+  },
+  {
+    "number": 3615,
+    "title": "COMPONENT: Running terraform --reconfigure --upgrade through cdktf",
+    "labels": [
+      "documentation",
+      "cdktf-cli",
+      "priority/important-longterm",
+      "core-parity"
+    ],
+    "created": "2024-05-06"
+  },
+  {
+    "number": 3641,
+    "title": "Prebuild binary missing for platform linux",
+    "labels": [
+      "bug",
+      "cdktf-cli",
+      "priority/important-longterm"
+    ],
+    "created": "2024-06-04"
+  },
+  {
+    "number": 3660,
+    "title": "Terraform Functions: issensitive function appears to be missing",
+    "labels": [
+      "priority/important-longterm",
+      "feature/terraform-functions"
+    ],
+    "created": "2024-06-27"
+  },
+  {
+    "number": 3674,
+    "title": "`cdktf convert` mangles string interpolation",
+    "labels": [
+      "bug",
+      "priority/important-longterm",
+      "feature/convert"
+    ],
+    "created": "2024-07-19"
+  }
+]

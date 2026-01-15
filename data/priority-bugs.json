@@ -1,0 +1,120 @@
+{
+  "number": 841,
+  "title": "Telemetry does not get send due to process.exit"
+}
+{
+  "number": 1115,
+  "title": "Error produced by cdktf get is not breaking docker build"
+}
+{
+  "number": 1479,
+  "title": "Warnings the first time synthesizing C# projects: \"Parameter 'config' has no matching param tag...\""
+}
+{
+  "number": 1641,
+  "title": "Resource FQN tokens aren't resolved in a user friendly way"
+}
+{
+  "number": 1850,
+  "title": "Unit testing - toHaveResource() - found no resources instead"
+}
+{
+  "number": 1898,
+  "title": "Azurerm first experience with c# dotnet and typescript"
+}
+{
+  "number": 2143,
+  "title": "Unmet peer dependencies for the cli"
+}
+{
+  "number": 2157,
+  "title": "Unable to perform cdktf diff when using multiple stacks with inter-stack dependencies"
+}
+{
+  "number": 2340,
+  "title": "Java, missing required field error is unclear"
+}
+{
+  "number": 2437,
+  "title": "cdktf provider upgrade issues"
+}
+{
+  "number": 2473,
+  "title": "Synth changing TerraformVariable map keys to snake case"
+}
+{
+  "number": 2641,
+  "title": "Convert breaking long lines into multiple causes compilation issues in python"
+}
+{
+  "number": 2662,
+  "title": "Cross Stack Reference Not Working with Modules"
+}
+{
+  "number": 2800,
+  "title": "Convert: Nested named structs are not properly addressed (JSII upstream issue)"
+}
+{
+  "number": 2820,
+  "title": "Convert: Type Coercion adds extra cast due to race condition (variables not being pre-populated)"
+}
+{
+  "number": 2824,
+  "title": "Convert: Golang has wrong casing (lower case letters for attributes)"
+}
+{
+  "number": 2855,
+  "title": "Error when trying to create a common base class for AWS Provider"
+}
+{
+  "number": 2871,
+  "title": "[Python] Testing.synth_scope is broken"
+}
+{
+  "number": 2877,
+  "title": "Inconsistent behaviour with variables from Terraform Cloud"
+}
+{
+  "number": 2910,
+  "title": "hcl2cdk: getExpressionAst fails with regex strings due to escaping"
+}
+{
+  "number": 2912,
+  "title": "hcl2cdk: produces incorrect typescript with mix of quoted and unquoted values"
+}
+{
+  "number": 2919,
+  "title": "cdktf-cli: terraform variables passed through --var flag and inter-stack dependencies don't interface nicely"
+}
+{
+  "number": 2976,
+  "title": "CDKTF: Cross stack dependencies fail if placed within a wrapper construct."
+}
+{
+  "number": 3095,
+  "title": "Display correct data format inside document"
+}
+{
+  "number": 3532,
+  "title": "lifecycle: replaceTriggeredBy should not be a string interpolation"
+}
+{
+  "number": 3538,
+  "title": "Testing: fullSynth generated incorrect stack is having incoming cross-stack references"
+}
+{
+  "number": 3546,
+  "title": "ReplaceTriggeredBy: Still not working in Golang"
+}
+{
+  "number": 3586,
+  "title": "CloudBackend: support environment variables like TF_CLOUD_ORGANIZATION"
+}
+{
+  "number": 3641,
+  "title": "Prebuild binary missing for platform linux"
+}
+{
+  "number": 3674,
+  "title": "`cdktf convert` mangles string interpolation"
+}

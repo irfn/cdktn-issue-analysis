@@ -1,0 +1,530 @@
+[
+  {
+    "assignees": [
+      {
+        "id": "MDQ6VXNlcjU3MzUzMQ==",
+        "login": "mutahhir",
+        "name": "Mutahhir Hayat",
+        "databaseId": 0
+      }
+    ],
+    "author": {
+      "id": "MDQ6VXNlcjc5NjMyNjU4",
+      "is_bot": false,
+      "login": "tieto-hemmopaa",
+      "name": "Paavo Hemmo"
+    },
+    "body": "<!--- Please keep this note for the community --->\r\n\r\n### Community Note\r\n\r\n- Please vote on this issue by adding a 👍 [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) to the original issue to help the community and maintainers prioritize this request\r\n- Please do not leave \"+1\" or other comments that do not add relevant new information or questions, they generate extra noise for issue followers and do not help prioritize the request\r\n- If you are interested in working on this issue or have submitted a pull request, please leave a comment\r\n\r\n<!--- Thank you for keeping this note for the community --->\r\n\r\n### cdktf & Language Versions\r\n\r\n<!--- Please make note of the version you are using for the `hashicorp/terraform-cdk` and language bindings you are using.\r\nIf you are not running the latest version, please upgrade because your issue may have already been fixed. --->\r\nNode v18.13.0\r\nTerraform v1.3.4\r\ncdktf 0.15.1\r\n\r\n### Affected Resource(s)\r\n\r\nTerraformVariable\r\n<!--- Please list the affected resources. --->\r\n\r\n### Debug Output\r\n\r\n<!---\r\nPlease provide a link to a GitHub Gist containing the complete debug output. Please do NOT paste the debug output in the issue; just paste a link to the Gist.\r\n--->\r\n\r\n### Expected Behavior\r\n\r\nCreating a TerraformVariable should get the values of environment variables `TF_VAR_awsAccessKey` and `TF_VAR_awsSecretAccessKey`.\r\n\r\nRunning `cdktf deploy test-stack-1` or `cdktf deploy test-stack-2` should be successful.\r\n\r\nmain.ts:\r\n\r\n```\r\nimport { Construct } from 'constructs';\r\nimport { App, TerraformStack, S3Backend, TerraformVariable } from 'cdktf';\r\nimport { AwsProvider } from './.gen/providers/aws/provider';\r\nimport { S3Bucket } from './.gen/providers/aws/s3-bucket';\r\nimport { DynamodbTable } from './.gen/providers/aws/dynamodb-table';\r\n\r\ninterface MultiStackConfig {\r\n    environment: string;\r\n}\r\nclass MultiStack extends TerraformStack {\r\n  constructor(scope: Construct, id: string, config: MultiStackConfig) {\r\n    super(scope, id);\r\n    \r\n    const awsAccessKey = new TerraformVariable(this, 'awsAccessKey', {\r\n      type: 'string',\r\n      description: 'AWS Access Key',\r\n      sensitive: true\r\n    })\r\n    const awsSecretAccessKey = new TerraformVariable(this, 'awsSecretAccessKey', {\r\n      type: 'string',\r\n      description: 'AWS Secret Access Key',\r\n      sensitive: true\r\n    })\r\n    new AwsProvider(this, 'aws', {\r\n      region: 'eu-west-1',\r\n      accessKey: awsAccessKey.value,\r\n      secretKey: awsSecretAccessKey.value\r\n    });\r\n\r\n    const { environment } = config;\r\n\r\n    new S3Bucket(this, 's3_backend_bucket', {\r\n      bucket: `cdktf-remote-backend-${environment}`,\r\n    });\r\n    new DynamodbTable(this, 'dynamodb_lock_table', {\r\n      name: `cdktf-remote-backend-lock-${environment}`,\r\n      billingMode: 'PAY_PER_REQUEST',\r\n      attribute: [\r\n        {\r\n          'name': 'LockID',\r\n          'type': 'S'\r\n        }\r\n      ],\r\n      hashKey: 'LockID',\r\n    });\r\n    new S3Backend(this, {\r\n      bucket: `cdktf-remote-backend-${environment}`,\r\n      key: `integration_portal/terraform_${environment}.tfstate`,\r\n      encrypt: true,\r\n      region: 'eu-west-1',\r\n      dynamodbTable: `cdktf-remote-backend-lock-${environment}`,\r\n      accessKey: awsAccessKey.value,\r\n      secretKey: awsSecretAccessKey.value\r\n    });\r\n  }\r\n}\r\n\r\nconst app = new App();\r\nnew MultiStack(app, 'test-stack-1', {\r\n  environment: 'qa'\r\n});\r\nnew MultiStack(app, 'test-stack-2', {\r\n  environment: 'prod'\r\n});\r\napp.synth();\r\n```\r\n\r\nEnvironment variables:\r\n```\r\nTF_VAR_awsAccessKey='accessKeyValueForIAMWithPermissions'\r\nTF_VAR_awsSecretAccessKey='secretAccessKeyValueForIAMWithPermissions'\r\n```\r\n<!--- What should have happened? --->\r\n\r\n### Actual Behavior\r\n\r\n<!--- What actually happened? --->\r\n\r\n`cdktf deploy test-stack-1` prints the following output:\r\n\r\n```\r\ntest-stack-1  Initializing the backend...\r\n\r\n\r\n1 Stack deploying     0 Stacks done     0 Stacks waiting\r\n[2023-01-25T14:29:22.234] [ERROR] default - ╷\r\n│ Error: error configuring S3 Backend: error validating provider credentials: error calling sts:GetCallerIdentity: InvalidClientTokenId: The security token included in the request is invalid.\r\n│ \tstatus code: 403, request id: [some_id]\r\n│ \r\n│ \r\ntest-stack-1  ╷\r\n                            │ Error: error configuring S3 Backend: error validating provider credentials: error calling sts:GetCallerIdentity: InvalidClientTokenId: The security token included in the request is invalid.\r\n                            │ \tstatus code: 403, request id: [some_id]\r\n                            │ \r\n                            │ \r\n                            ╵\r\n                            \r\n\r\n\r\n0 Stacks deploying     1 Stack done     0 Stacks waiting\r\nError: non-zero exit code 1\r\n\r\n```\r\n\r\n### Steps to Reproduce\r\n\r\n<!--- Please list the steps required to reproduce the issue. --->\r\n\r\n1. Create an AWS IAM User with the required permissions.\r\n\r\n2. Make an empty directory and go there\r\n```\r\nmkdir test-cdktf\r\ncd test-cdktf\r\n```\r\n\r\n3. Init the project:\r\n```\r\ncdktf init --template=typescript\r\n```\r\n\r\n4. When done, modify the cdktf.json file by adding the provider:\r\n```\r\n\"terraformProviders\": [\r\n    \"aws@~> 4.0\"\r\n  ]\r\n```\r\n5. Create the appropriate TypeScript classes for the provider (creates content to the .gen-folder):\r\n```\r\ncdktf get\r\n```\r\n\r\n6. Copy the content of my main.ts file to your project.\r\n\r\n7. Add `TF_VAR_awsAccessKey` and `TF_VAR_awsSecretAccessKey` to environment variables.\r\n\r\n8. Deploy the `test-stack-1` (or `test-stack-2`):\r\n\r\n```\r\ncdktf deploy test-stack-1\r\n```\r\n\r\n\r\n### Important Factoids\r\n\r\nThe IAM role used for this deployment does have the correct permissions. The code works fine by hard-coding the environment variable values to the code and getting rid of TerraformVariable.\r\n\r\n<!--- Are there anything atypical about your accounts that we should know? --->\r\n\r\n\r\n\r\n### References\r\n\r\n<!---\r\nInformation about referencing Github Issues: https://help.github.com/articles/basic-writing-and-formatting-syntax/#referencing-issues-and-pull-requests\r\n\r\nAre there any other GitHub issues (open or closed) or pull requests that should be linked here? Vendor documentation? For example:\r\n--->\r\n\r\n- #0000\r\n",
+    "comments": [
+      {
+        "id": "IC_kwDODd1Amc5Tqh-j",
+        "author": {
+          "login": "ansgarm"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "Hi @tieto-hemmopaa 👋\r\nJust to confirm that there's not a problem in setting the environment variable: Could you try to run `echo $TF_VAR_awsAccessKey` to confirm that the value of the variable does not contain quotes (`'`) or similar?",
+        "createdAt": "2023-01-25T13:52:20Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/2535#issuecomment-1403658147",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc5TqjnR",
+        "author": {
+          "login": "ansgarm"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "I just checked the [related Terraform docs](https://developer.hashicorp.com/terraform/language/settings/backends/configuration), and it appears that you can't use Terraform Variables to configure backends.\r\n\r\nWe should catch such errors in the CDKTF core library (e.g. using an Aspect, as we already do for other checks) and print a helpful warning.\r\n\r\nI'm wondering why Terraform isn't giving a better error, though 🤔",
+        "createdAt": "2023-01-25T13:57:33Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/2535#issuecomment-1403664849",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc5Tqjsi",
+        "author": {
+          "login": "tieto-hemmopaa"
+        },
+        "authorAssociation": "NONE",
+        "body": "Hi @ansgarm !\r\nNo quotes. I've tried setting the environment variables both with and without quotes. Neither of those add them to the value of the variable.",
+        "createdAt": "2023-01-25T13:57:51Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/2535#issuecomment-1403665186",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc5TqkF0",
+        "author": {
+          "login": "ansgarm"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "From the [docs](https://developer.hashicorp.com/terraform/language/settings/backends/configuration) of the S3 backend:\r\n> This can also be sourced from the AWS_ACCESS_KEY_ID environment variable\r\n\r\nSounds like you should be able to pass the required keys using the environment variables defined in the docs of the S3 backend.",
+        "createdAt": "2023-01-25T13:59:06Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/2535#issuecomment-1403666804",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc5Tqu1c",
+        "author": {
+          "login": "tieto-hemmopaa"
+        },
+        "authorAssociation": "NONE",
+        "body": "Thank you so much @ansgarm !\r\n\r\nIn case anyone else is wondering, I was able to get my code working by first modifying the code in the following way:\r\n\r\n```\r\nnew S3Backend(this, {\r\n      bucket: `cdktf-remote-backend-${environment}`,\r\n      key: `integration_portal/terraform_${environment}.tfstate`,\r\n      encrypt: true,\r\n      region: 'eu-west-1',\r\n      dynamodbTable: `cdktf-remote-backend-lock-${environment}`,\r\n      accessKey: process.env.TF_VAR_awsAccessKey,\r\n      secretKey: process.env.TF_VAR_awsSecretAccessKey\r\n    });\r\n```\r\n\r\nAnd running the `terraform init -migrate-state` command in `cdktf.out/stacks/test-stack-1`.\r\n\r\nAfter that `cdktf deploy test-stack-1` works perfectly.",
+        "createdAt": "2023-01-25T14:30:04Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/2535#issuecomment-1403710812",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc5Tq0Ea",
+        "author": {
+          "login": "ansgarm"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "Glad you figured it out!\r\nThe only warning I have about using `process.env.TF_VAR_awsAccessKey` is that it will cause the secret to end up in the generated `cdk.tf.json` file. So be cautious if you commit that file to CI or do something else with it!",
+        "createdAt": "2023-01-25T14:45:14Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/2535#issuecomment-1403732250",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc5TrNyM",
+        "author": {
+          "login": "tieto-hemmopaa"
+        },
+        "authorAssociation": "NONE",
+        "body": "I only use `process.env.TF_VAR_awsAccessKey` and `process.env.TF_VAR_awsSecretAccessKey` when configuring the `S3Backend`. 👍 For all the other classes I use the `TerraformVariable`.\r\n\r\nThe secrets used configuring the backend do not seem to end up in the `cdk.tf.json` files.\r\n\r\nThe content of the file for the Backend looks like this:\r\n\r\n```\r\n\"backend\": {\r\n      \"s3\": {\r\n        \"bucket\": \"cdktf-remote-backend-qa\",\r\n        \"dynamodb_table\": \"cdktf-remote-backend-lock-qa\",\r\n        \"encrypt\": true,\r\n        \"key\": \"integration_portal/terraform_qa.tfstate\",\r\n        \"region\": \"eu-west-1\"\r\n      }\r\n}\r\n```\r\n",
+        "createdAt": "2023-01-25T15:55:40Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/2535#issuecomment-1403837580",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc5TrREz",
+        "author": {
+          "login": "ansgarm"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "Hm, maybe you ran `cdktf diff/plan/apply/deploy/destroy` without those environment variables at a later stage? If you have them set, they should end up in the generated file. But if you run `synth` (happens automatically for the commands I mentioned previously) it'll recreate that generated file – thereby possibly removing those secrets again.\r\nIt does not need to be a bad thing, I just wanted to point that out as it can bring trouble depending on when you set those secrets and what you do with the generated file afterwards.",
+        "createdAt": "2023-01-25T16:05:06Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/2535#issuecomment-1403851059",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc5TuM3W",
+        "author": {
+          "login": "tieto-hemmopaa"
+        },
+        "authorAssociation": "NONE",
+        "body": "Sure, I ran all sorts of commands during the process. I'll keep an eye out later on 👍 ",
+        "createdAt": "2023-01-26T06:56:02Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [
+          {
+            "content": "THUMBS_UP",
+            "users": {
+              "totalCount": 1
+            }
+          }
+        ],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/2535#issuecomment-1404620246",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc5WnXhF",
+        "author": {
+          "login": "ansgarm"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "This just came up in a question on the CDK Dev Slack where CDKTF allowed the value of a AWS SSM Parameter data source to be passed to a Terraform Backend although Terraform did not support this. This seemed to have resulted in an unresolved token that was put into the backend config.",
+        "createdAt": "2023-03-03T08:33:20Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/2535#issuecomment-1453160517",
+        "viewerDidAuthor": false
+      }
+    ],
+    "createdAt": "2023-01-25T13:43:57Z",
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwxNzc1NzEyNzc1",
+        "name": "bug",
+        "description": "Something isn't working",
+        "color": "d73a4a"
+      },
+      {
+        "id": "MDU6TGFiZWwxNzc1NzEyNzgw",
+        "name": "documentation",
+        "description": "Improvements or additions to documentation",
+        "color": "0075ca"
+      },
+      {
+        "id": "MDU6TGFiZWwyMjI4Mzg3NjY3",
+        "name": "cdktf",
+        "description": "",
+        "color": "fccac4"
+      },
+      {
+        "id": "MDU6TGFiZWwzMTMwNzg0MDc0",
+        "name": "priority/important-soon",
+        "description": "High priority, to be worked on as part of our current release or the following one.",
+        "color": "CC56C1"
+      },
+      {
+        "id": "MDU6TGFiZWwzMTM2Mjc5MjMx",
+        "name": "ux/configuration",
+        "description": "",
+        "color": "58FCA0"
+      }
+    ],
+    "milestone": null,
+    "number": 2535,
+    "title": "Passing backend config through `TerraformVariable`s is not supported by Terraform",
+    "updatedAt": "2023-03-03T08:33:21Z"
+  },
+  {
+    "assignees": [],
+    "author": {
+      "id": "MDQ6VXNlcjEzMDgwOTY1",
+      "is_bot": false,
+      "login": "Almenon",
+      "name": "Almenon"
+    },
+    "body": "### Description\n\nThe docs say \"The following example creates three different S3 buckets\" but the following example only has two different S3 buckets. A third would be useful to show when you might want to use a different scope. I'm currently unclear on when you would use a different scope than the usual `new App()` scope.\n\n### Links\n\nhttps://developer.hashicorp.com/terraform/cdktf/concepts/constructs#scope\n\n### Help Wanted\n\n- [ ] I'm interested in contributing a fix myself\n\n### Community Note\n\n- Please vote on this issue by adding a 👍 [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) to the original issue to help the community and maintainers prioritize this request\r\n- Please do not leave \"+1\" or other comments that do not add relevant new information or questions, they generate extra noise for issue followers and do not help prioritize the request\r\n- If you are interested in working on this issue or have submitted a pull request, please leave a comment\r\n",
+    "comments": [
+      {
+        "id": "IC_kwDODd1Amc5wV2df",
+        "author": {
+          "login": "ansgarm"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "Hi @Almenon 👋\r\n\r\nI just checked this and it seems like there are three S3 buckets in total (one in the root stack and two in the nested construct).\r\n\r\nCould you elaborate some more on what you'd like to have clarified in regards to the app scope?",
+        "createdAt": "2024-01-10T12:39:33Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3042#issuecomment-1884776287",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc5wbdIt",
+        "author": {
+          "login": "Almenon"
+        },
+        "authorAssociation": "NONE",
+        "body": "where is the root stack? is that \"mystack\"?",
+        "createdAt": "2024-01-11T04:58:45Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3042#issuecomment-1886245421",
+        "viewerDidAuthor": false
+      }
+    ],
+    "createdAt": "2023-08-01T18:12:05Z",
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwxNzc1NzEyNzgw",
+        "name": "documentation",
+        "description": "Improvements or additions to documentation",
+        "color": "0075ca"
+      },
+      {
+        "id": "MDU6TGFiZWwzMTMwNzg0MDc0",
+        "name": "priority/important-soon",
+        "description": "High priority, to be worked on as part of our current release or the following one.",
+        "color": "CC56C1"
+      },
+      {
+        "id": "MDU6TGFiZWwzMjIzNzk4Mjg1",
+        "name": "size/small",
+        "description": "estimated < 1 day",
+        "color": "4671C0"
+      }
+    ],
+    "milestone": null,
+    "number": 3042,
+    "title": "Documentation: Constructs page scope text not in alignment with code",
+    "updatedAt": "2024-01-11T04:58:55Z"
+  },
+  {
+    "assignees": [],
+    "author": {
+      "id": "MDQ6VXNlcjM2MjI0NzM3",
+      "is_bot": false,
+      "login": "Rom888",
+      "name": ""
+    },
+    "body": "### Expected Behavior\r\n\r\nNo DeprecationWarning\r\n\r\n### Actual Behavior\r\n\r\nThere is DepricationWarning\r\ncdktf --version\r\n```\r\n0.20.7\r\n(node:529691) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\n(Use `node --trace-deprecation ...` to show where the warning was created)\r\n```\r\n\r\n### Steps to Reproduce\r\n\r\npnpm add --global cdktf-cli@0.20.7 --ignore-scripts\r\ncdktf --version\r\n\r\n### Versions\r\n\r\nlanguage: typescript\r\ncdktf-cli: 0.20.7\r\nnode: 22.2.0\r\nterraform: 1.8.4\r\narch: amd64\r\nos: ubuntu 23.10\r\n\r\ninnerError Error: Cannot find module '../build/Debug/pty.node'\r\nRequire stack:\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/prebuild-loader.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/unixTerminal.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/index.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cmds/handlers.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1186:15)\r\n    at Module._load (node:internal/modules/cjs/loader:1012:27)\r\n    at Module.require (node:internal/modules/cjs/loader:1271:19)\r\n    at require (node:internal/modules/helpers:123:16)\r\n    at Object.<anonymous> (/home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/src/prebuild-loader.ts:9:11)\r\n    at Module._compile (node:internal/modules/cjs/loader:1434:14)\r\n    at Module._extensions..js (node:internal/modules/cjs/loader:1518:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1249:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1065:12)\r\n    at Module.require (node:internal/modules/cjs/loader:1271:19) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/prebuild-loader.js',\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/unixTerminal.js',\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/index.js',\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cmds/handlers.js',\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf.js',\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf'\r\n  ]\r\n}\r\n(node:529917) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\n(Use `node --trace-deprecation ...` to show where the warning was created)\r\nCannot find module '../build/Release/pty.node'\r\nRequire stack:\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/prebuild-loader.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/unixTerminal.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/index.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cmds/handlers.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf\r\nError: Cannot find module '../build/Release/pty.node'\r\nRequire stack:\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/prebuild-loader.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/unixTerminal.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/index.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cmds/handlers.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1186:15)\r\n    at Module._load (node:internal/modules/cjs/loader:1012:27)\r\n    at Module.require (node:internal/modules/cjs/loader:1271:19)\r\n    at require (node:internal/modules/helpers:123:16)\r\n    at Object.<anonymous> (/home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/src/prebuild-loader.ts:6:9)\r\n    at Module._compile (node:internal/modules/cjs/loader:1434:14)\r\n    at Module._extensions..js (node:internal/modules/cjs/loader:1518:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1249:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1065:12)\r\n    at Module.require (node:internal/modules/cjs/loader:1271:19)\r\nCollecting Debug Information...\r\nnode:internal/process/promises:391\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nError: Cannot find module '../build/Release/pty.node'\r\nRequire stack:\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/prebuild-loader.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/unixTerminal.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/index.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cmds/handlers.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf.js\r\n- /home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1186:15)\r\n    at Module._load (node:internal/modules/cjs/loader:1012:27)\r\n    at Module.require (node:internal/modules/cjs/loader:1271:19)\r\n    at require (node:internal/modules/helpers:123:16)\r\n    at Object.<anonymous> (/home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/src/prebuild-loader.ts:6:9)\r\n    at Module._compile (node:internal/modules/cjs/loader:1434:14)\r\n    at Module._extensions..js (node:internal/modules/cjs/loader:1518:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1249:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1065:12)\r\n    at Module.require (node:internal/modules/cjs/loader:1271:19) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/prebuild-loader.js',\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/unixTerminal.js',\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/index.js',\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cmds/handlers.js',\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf.js',\r\n    '/home/rom/.local/share/pnpm/global/5/.pnpm/cdktf-cli@0.20.7_ink@3.2.0_react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf'\r\n  ]\r\n}\r\n\r\nNode.js v22.2.0\r\n\r\n### Providers\r\n\r\n_No response_\r\n\r\n### Gist\r\n\r\n_No response_\r\n\r\n### Possible Solutions\r\n\r\n_No response_\r\n\r\n### Workarounds\r\n\r\n_No response_\r\n\r\n### Anything Else?\r\n\r\n_No response_\r\n\r\n### References\r\n\r\n_No response_\r\n\r\n### Help Wanted\r\n\r\n- [ ] I'm interested in contributing a fix myself\r\n\r\n### Community Note\r\n\r\n- Please vote on this issue by adding a 👍 [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) to the original issue to help the community and maintainers prioritize this request\r\n- Please do not leave \"+1\" or other comments that do not add relevant new information or questions, they generate extra noise for issue followers and do not help prioritize the request\r\n- If you are interested in working on this issue or have submitted a pull request, please leave a comment\r\n",
+    "comments": [
+      {
+        "id": "IC_kwDODd1Amc6CwgIQ",
+        "author": {
+          "login": "benkeil"
+        },
+        "authorAssociation": "NONE",
+        "body": "That's really serious. Node 21 reached end of life.",
+        "createdAt": "2024-06-27T05:26:27Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3640#issuecomment-2193752592",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc6J3DTh",
+        "author": {
+          "login": "eahrend"
+        },
+        "authorAssociation": "NONE",
+        "body": "Yeah, this got me too. I had to downgrade to node 20.",
+        "createdAt": "2024-08-27T15:40:06Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3640#issuecomment-2312910049",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc6RqfkL",
+        "author": {
+          "login": "RomeroGaliza"
+        },
+        "authorAssociation": "NONE",
+        "body": "Same behaviour detected on my end.\r\n\r\nReproducible with:\r\n\r\n```\r\n$ cdktf --version\r\n0.20.9\r\n(node:13247) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\n(Use `node --trace-deprecation ...` to show where the warning was created)\r\n```\r\n**Versions**\r\nlanguage: typescript\r\ncdktf-cli: 0.20.9\r\nnode: tested with 22.10.0  **and** 21.7.3\r\nterraform: 1.9.8\r\narch: amd64\r\nos: macOS 14.6.1 (23G93)\r\n\r\nThis is forcing users to rely on older node versions (20.10.0) 😢",
+        "createdAt": "2024-10-29T10:31:14Z",
+        "includesCreatedEdit": true,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3640#issuecomment-2443835659",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc6SbrsR",
+        "author": {
+          "login": "troch"
+        },
+        "authorAssociation": "NONE",
+        "body": "The issue is not the warning on the use of `punycode` but `Cannot find module '../build/Debug/pty.node'`.\r\n`@cdktf/node-pty-prebuilt-multiarch` does not support node 22 prebuilds, which was added to the upstream repo https://github.com/homebridge/node-pty-prebuilt-multiarch/releases/tag/v0.11.14\r\n",
+        "createdAt": "2024-11-05T09:57:48Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3640#issuecomment-2456730385",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc6TBQsB",
+        "author": {
+          "login": "ManfredLange"
+        },
+        "authorAssociation": "NONE",
+        "body": "I've just upgraded to node js version 22.11.0 which the most recent LTS version. I'm using CDKTF for TypeScript version 0.20.9 and Terraform version 1.9.8. My TypeScript version is 5.6.3, in case that even matters. \"@cdktf/provider-aws\" is version 19.39.0.\r\n\r\nI first got nasty runtime errors as this one, which didn't permit me to continue:\r\n\r\n```\r\ninnerError Error: Cannot find module '../build/Debug/pty.node'\r\nRequire stack:\r\n- /work/src/node_modules/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/prebuild-loader.js\r\n- /work/src/node_modules/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/unixTerminal.js\r\n- /work/src/node_modules/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/index.js\r\n- /work/src/node_modules/.pnpm/cdktf-cli@0.20.9_ink@3.2.0_react@17.0.2__react@17.0.2/node_modules/cdktf-cli/bundle/bin/cmds/handlers.js\r\n- /work/src/node_modules/.pnpm/cdktf-cli@0.20.9_ink@3.2.0_react@17.0.2__react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf.js\r\n- /work/src/node_modules/.pnpm/cdktf-cli@0.20.9_ink@3.2.0_react@17.0.2__react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf\r\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)\r\n    at Function._load (node:internal/modules/cjs/loader:1075:27)\r\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)\r\n    at Module.require (node:internal/modules/cjs/loader:1340:12)\r\n    at require (node:internal/modules/helpers:141:16)\r\n    at Object.<anonymous> (/work/src/node_modules/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/prebuild-loader.js:10:15)\r\n    at Module._compile (node:internal/modules/cjs/loader:1546:14)\r\n    at Object..js (node:internal/modules/cjs/loader:1689:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1318:32) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    '/work/src/node_modules/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/prebuild-loader.js',\r\n    '/work/src/node_modules/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/unixTerminal.js',\r\n    '/work/src/node_modules/.pnpm/@cdktf+node-pty-prebuilt-multiarch@0.10.1-pre.11/node_modules/@cdktf/node-pty-prebuilt-multiarch/lib/index.js',\r\n    '/work/src/node_modules/.pnpm/cdktf-cli@0.20.9_ink@3.2.0_react@17.0.2__react@17.0.2/node_modules/cdktf-cli/bundle/bin/cmds/handlers.js',\r\n    '/work/src/node_modules/.pnpm/cdktf-cli@0.20.9_ink@3.2.0_react@17.0.2__react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf.js',\r\n    '/work/src/node_modules/.pnpm/cdktf-cli@0.20.9_ink@3.2.0_react@17.0.2__react@17.0.2/node_modules/cdktf-cli/bundle/bin/cdktf'\r\n  ]\r\n}\r\n(node:1704) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\n(Use `node --trace-deprecation ...` to show where the warning was created)\r\n```\r\n\r\nThen I deleted the `node_modules` directory and reinstalled the package dependencies with ```pnpm install``` (\"npm ci\" or \"npm install\" should work as well if you use \"npm\"). This solved the first problem, but now it's showing this warning:\r\n\r\n```\r\n(node:2937) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\r\n(Use `node --trace-deprecation ...` to show where the warning was created)\r\n```\r\nTo me it looks as if CDKTF is somewhat behind with keeping its dependencies up-to-date....\r\n\r\nI hope the above helps others to resolve the issue as it did for me. It'd be good, though, if the dependencies could be brought up-to-date. Thank you!",
+        "createdAt": "2024-11-10T04:34:38Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3640#issuecomment-2466581249",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc6YTk6w",
+        "author": {
+          "login": "iainbrux"
+        },
+        "authorAssociation": "NONE",
+        "body": "Unfortunately, this error has re-presented itself.\r\n\r\nlanguage: typescript\r\ncdktf-cli: 0.20.9\r\nnode: 22.12.0\r\nterraform: 1.8.5\r\narch: amd64\r\nos: MacOS Sonoma 14.3.1",
+        "createdAt": "2024-12-19T17:27:19Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3640#issuecomment-2555268784",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc6tHKGj",
+        "author": {
+          "login": "PetteriVaarala"
+        },
+        "authorAssociation": "NONE",
+        "body": "This is still a problem\n\n```\n❯ cdktf init\ninnerError Error: Cannot find module '../build/Debug/pty.node'\n```\n\ncdktf-cli: 0.20.12\nnode: v23.6.1\nterraform: v1.11.4\narch: linux_amd64\nos: Ubuntu",
+        "createdAt": "2025-05-23T12:55:04Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3640#issuecomment-2904334755",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc7R6p0i",
+        "author": {
+          "login": "LozanoMatheus"
+        },
+        "authorAssociation": "NONE",
+        "body": "I also get the `Cannot find module '../build/Release/pty.node'` error.\n\nI tried the same approach using npm and pnpm. This seems to be particular to pnpm because I tried to install it with `npm install --global cdktf-cli@latest`, then do `npx cdktf get` (or any other cdktf command), and it works fine. I tried the same thing with pnpm, `pnpm add -g cdktf-cli@latest`, then `cdktf init --template=typescript --providers=hashicorp/terraform-provider-aws --local` (I've the PNPM_HOME + PATH variables configured), and this throws me the error. I also tried to add the cdktf-cli in the package.json and got the same result.\n\nI'm using the latest node LTS `v24.11.1` and the latest pnpm `10.19.1-oidc-test.3`. So, for now, I'll just use npm/npx till this gets solved on pnpm.",
+        "createdAt": "2025-11-12T12:57:20Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3640#issuecomment-3521813794",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc7SCdY6",
+        "author": {
+          "login": "johanhammar"
+        },
+        "authorAssociation": "NONE",
+        "body": "I wonder if the problem with `Cannot find module '../build/Release/pty.node` error has  something to do whether npm build scripts are enabled or not\n\nInstalling cdktf-cli with `npm_config_ignore_scripts=true npm install -g cdktf-cli@latest` results in\n\n```\n❯ cdktf init --local\ninnerError Error: Cannot find module '../build/Debug/pty.node'\n...\n```\n\nHowever, installing it with `npm_config_ignore_scripts=false npm install -g cdktf-cli@latest` works\n\n```\n❯ cdktf init --local --template=typescript\nNote: By supplying '--local' option you have chosen local storage mode for storing the state of your stack.\nThis means that your Terraform state file will be stored locally on disk in a file 'terraform.<STACK NAME>.tfstate' in the root of your project.\n? Project Name cdktf\n...\n```\n\nI've seen this problem before and I think that for pnpm install scripts are disabled by default for dependencies. See https://github.com/pnpm/pnpm/pull/8897\n\nWhat ignore scripts does is that it prevents any lifecycle hooks for dependencies. There's different ways of ignoring scripts, some more info at https://www.nodejs-security.com/blog/npm-ignore-scripts-best-practices-as-security-mitigation-for-malicious-packages\n",
+        "createdAt": "2025-11-12T20:46:38Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3640#issuecomment-3523860026",
+        "viewerDidAuthor": false
+      }
+    ],
+    "createdAt": "2024-06-04T12:37:54Z",
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwxNzc1NzEyNzc1",
+        "name": "bug",
+        "description": "Something isn't working",
+        "color": "d73a4a"
+      },
+      {
+        "id": "MDU6TGFiZWwzMTMwNzg0MDc0",
+        "name": "priority/important-soon",
+        "description": "High priority, to be worked on as part of our current release or the following one.",
+        "color": "CC56C1"
+      }
+    ],
+    "milestone": null,
+    "number": 3640,
+    "title": "DeprecationWarning: The `punycode` module is deprecated",
+    "updatedAt": "2025-11-12T20:46:38Z"
+  },
+  {
+    "assignees": [],
+    "author": {
+      "id": "MDQ6VXNlcjE0OTk3ODA=",
+      "is_bot": false,
+      "login": "Hi-Fi",
+      "name": "Juho Saarinen"
+    },
+    "body": "### Expected Behavior\n\nTerraform can be initialized with CDKTF synthesized stack in HCL format. Remote configuration would look like:\n```\nterraform {\n  backend \"remote\" {\n    organization = \"test-organization\"\n    workspaces {\n      name = \"test-stack\"\n    }\n    hostname = \"test.artifactory.local\"\n  }\n}\n```\n\n### Actual Behavior\n\nCDKTF synthesized incorrect remove configuration\n```\nterraform {\n  backend \"remote\" {\n    organization = \"test-organization\"\n    workspaces = {\n      name = \"test-stack\"\n    }\n    hostname = \"test.artifactory.local\"\n  }\n}\n```\n\nWhen manually removing that `=` after `workspaces`, init works fine.\n\n### Steps to Reproduce\n\n1. Initialize empty CDKTF project\n2. Add following remote backend to it\n3. Synthesize stack to HCL (`cdktf synth --hcl`)\n4. Go to output directory of stack and run `terraform init`\n\n### Versions\n\nlanguage: typescript\ncdktf-cli: 0.20.8\nnode: v20.13.1\ncdktf: 0.20.8\nconstructs: 10.3.0\njsii: null\nterraform: 1.9.4\narch: arm64\nos: darwin 23.6.0\n\n### Providers\n\n_No response_\n\n### Gist\n\n_No response_\n\n### Possible Solutions\n\nProbably some specific handling needed for that part. Didn't had any other places with similar issues. Datasource to remote works different way and it requires that `=` sign.\n\n### Workarounds\n\nDon't use HCL (not working for me as HCL is needed for Sonarqube analysis)\n\n### Anything Else?\n\n_No response_\n\n### References\n\n_No response_\n\n### Help Wanted\n\n- [x] I'm interested in contributing a fix myself\n\n### Community Note\n\n- Please vote on this issue by adding a 👍 [reaction](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) to the original issue to help the community and maintainers prioritize this request\n- Please do not leave \"+1\" or other comments that do not add relevant new information or questions, they generate extra noise for issue followers and do not help prioritize the request\n- If you are interested in working on this issue or have submitted a pull request, please leave a comment\n",
+    "comments": [
+      {
+        "id": "IC_kwDODd1Amc6IGqu0",
+        "author": {
+          "login": "mutahhir"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "Another alternative is to use the `cloud` block. ([Docs](https://developer.hashicorp.com/terraform/cdktf/api-reference/typescript#cdktf.CloudBackendConfig)), which is recommended by terraform anyway over the remote backend. From my understanding, that doesn't have this problem.\r\n\r\nThe remote backend is a bug nonetheless. We will be fixing it in a future release.",
+        "createdAt": "2024-08-12T09:04:36Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3698#issuecomment-2283449268",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc6IYuzS",
+        "author": {
+          "login": "Hi-Fi"
+        },
+        "authorAssociation": "NONE",
+        "body": "We use Artifactory as state backend, I understood that `Cloud` backend is reserved for HCP Terraform (ex-Terraform Cloud) (and it's Enterprise version) and `remote` is for that",
+        "createdAt": "2024-08-14T08:41:47Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3698#issuecomment-2288184530",
+        "viewerDidAuthor": false
+      },
+      {
+        "id": "IC_kwDODd1Amc68XBHd",
+        "author": {
+          "login": "jore731"
+        },
+        "authorAssociation": "NONE",
+        "body": "I guess there is no intention to fix this... CDKTF is cool and powerful, but without maintenance hard to use...",
+        "createdAt": "2025-08-06T13:19:21Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/hashicorp/terraform-cdk/issues/3698#issuecomment-3160150493",
+        "viewerDidAuthor": false
+      }
+    ],
+    "createdAt": "2024-08-12T04:55:33Z",
+    "labels": [
+      {
+        "id": "MDU6TGFiZWwxNzc1NzEyNzc1",
+        "name": "bug",
+        "description": "Something isn't working",
+        "color": "d73a4a"
+      },
+      {
+        "id": "MDU6TGFiZWwzMTMwNzg0MDc0",
+        "name": "priority/important-soon",
+        "description": "High priority, to be worked on as part of our current release or the following one.",
+        "color": "CC56C1"
+      },
+      {
+        "id": "LA_kwDODd1Amc8AAAABH924aQ",
+        "name": "bug/has-workaround",
+        "description": "A bug with a workaround (may not be elegant)",
+        "color": "9e202d"
+      }
+    ],
+    "milestone": null,
+    "number": 3698,
+    "title": "CLI: HCL synth generates incorrect remote configuration with workspaces",
+    "updatedAt": "2025-08-10T18:00:53Z"
+  }
+]

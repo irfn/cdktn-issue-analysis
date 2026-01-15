@@ -1,0 +1,171 @@
+{
+  "number": 3916,
+  "title": "Upgrade .NET framework to 9.0",
+  "labels": [
+    "enhancement",
+    "new"
+  ],
+  "created": "2025-07-17"
+}
+{
+  "number": 3908,
+  "title": "cdktf-provider-helm: ‘id_’ error for ‘Release’ starting version 12.0.0",
+  "labels": [
+    "bug",
+    "new"
+  ],
+  "created": "2025-06-30"
+}
+{
+  "number": 3812,
+  "title": "Talos Provider: translation to Python produces incompatible types",
+  "labels": [],
+  "created": "2025-01-27"
+}
+{
+  "number": 3803,
+  "title": "CLI: provider generation fails on versions newer than 0.20.1",
+  "labels": [
+    "bug",
+    "new"
+  ],
+  "created": "2025-01-17"
+}
+{
+  "number": 3762,
+  "title": "AppConfig Hosted Configuration Version does not return the right deployment version",
+  "labels": [
+    "bug",
+    "new"
+  ],
+  "created": "2024-11-04"
+}
+{
+  "number": 3759,
+  "title": "cdktf-cli: Support Kotlin build scripts in cdktf library version detection when Gradle is used",
+  "labels": [
+    "enhancement",
+    "new"
+  ],
+  "created": "2024-11-02"
+}
+{
+  "number": 3615,
+  "title": "COMPONENT: Running terraform --reconfigure --upgrade through cdktf",
+  "labels": [
+    "documentation",
+    "cdktf-cli",
+    "priority/important-longterm",
+    "core-parity"
+  ],
+  "created": "2024-05-06"
+}
+{
+  "number": 3609,
+  "title": "Add support for inline comments compatible with tools like checkov",
+  "labels": [
+    "enhancement",
+    "new"
+  ],
+  "created": "2024-05-01"
+}
+{
+  "number": 3488,
+  "title": "CDKTF version <0.19 creates duplicates in schema with new Fivetran provider",
+  "labels": [
+    "bug",
+    "provider get / generation"
+  ],
+  "created": "2024-02-06"
+}
+{
+  "number": 2746,
+  "title": "cdktf Python - Expose version via Python API",
+  "labels": [
+    "enhancement",
+    "cdktf",
+    "priority/important-longterm",
+    "ux/configuration",
+    "size/small"
+  ],
+  "created": "2023-03-29"
+}
+{
+  "number": 2437,
+  "title": "cdktf provider upgrade issues",
+  "labels": [
+    "bug",
+    "cdktf-cli",
+    "priority/important-longterm",
+    "size/medium",
+    "cli/provider-subcommands"
+  ],
+  "created": "2022-12-20"
+}
+{
+  "number": 2230,
+  "title": "Support upgrading all used providers at once via `cdktf provider upgrade`",
+  "labels": [
+    "enhancement",
+    "cdktf-cli",
+    "priority/important-longterm",
+    "cli/provider-subcommands"
+  ],
+  "created": "2022-10-28"
+}
+{
+  "number": 2191,
+  "title": "CDKTF should check if the pre-built providers peer dependency matches the installed cdktf version",
+  "labels": [
+    "enhancement",
+    "cdktf-cli",
+    "priority/important-longterm",
+    "ux/cli",
+    "size/medium",
+    "pre-built providers"
+  ],
+  "created": "2022-10-14"
+}
+{
+  "number": 1991,
+  "title": "Make our init templates more robust against upstream version changes",
+  "labels": [
+    "enhancement",
+    "cdktf-cli",
+    "priority/important-longterm",
+    "size/small",
+    "feature/init"
+  ],
+  "created": "2022-08-03"
+}
+{
+  "number": 1762,
+  "title": "provider version gets pinned on synth",
+  "labels": [
+    "bug",
+    "cdktf",
+    "priority/awaiting-more-evidence"
+  ],
+  "created": "2022-04-29"
+}
+{
+  "number": 1703,
+  "title": "Add library version checks for non-TS languages",
+  "labels": [
+    "enhancement",
+    "cdktf-cli",
+    "priority/awaiting-more-evidence",
+    "ux/debugging"
+  ],
+  "created": "2022-04-08"
+}
+{
+  "number": 526,
+  "title": "Improve cdktf upgrade documentation.",
+  "labels": [
+    "documentation",
+    "priority/important-longterm",
+    "size/small"
+  ],
+  "created": "2021-01-27"
+}

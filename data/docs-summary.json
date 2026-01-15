@@ -1,0 +1,392 @@
+[
+  {
+    "number": 304,
+    "title": "DOC: is there any API/DOC for providers maintainer to support terraform-cdk?",
+    "priority": "important-longterm",
+    "created": "2020-08-13"
+  },
+  {
+    "number": 432,
+    "title": "More examples using inheritance in Python for CDKTF",
+    "priority": "backlog",
+    "created": "2020-11-18"
+  },
+  {
+    "number": 526,
+    "title": "Improve cdktf upgrade documentation.",
+    "priority": "important-longterm",
+    "created": "2021-01-27"
+  },
+  {
+    "number": 674,
+    "title": "Document Synth Process",
+    "priority": "backlog",
+    "created": "2021-05-03"
+  },
+  {
+    "number": 749,
+    "title": "Create a separate repo for examples",
+    "priority": "none",
+    "created": "2021-05-30"
+  },
+  {
+    "number": 798,
+    "title": "Reduce/document differences between cdktf synth and running app directly",
+    "priority": "important-longterm",
+    "created": "2021-06-24"
+  },
+  {
+    "number": 831,
+    "title": "Document transition between generated and pre-built providers",
+    "priority": "backlog",
+    "created": "2021-07-13"
+  },
+  {
+    "number": 838,
+    "title": "Using CDK to manage multiple Stacks generated separately ? ",
+    "priority": "backlog",
+    "created": "2021-07-20"
+  },
+  {
+    "number": 918,
+    "title": "How multiple team members can use terraform CDKTF Project in a shared way",
+    "priority": "important-longterm",
+    "created": "2021-08-18"
+  },
+  {
+    "number": 956,
+    "title": "Add specific example for using private Terraform modules to docs",
+    "priority": "important-longterm",
+    "created": "2021-09-07"
+  },
+  {
+    "number": 1216,
+    "title": "Docs need (security) guidance around `.terraform.lock.hcl`",
+    "priority": "important-longterm",
+    "created": "2021-10-27"
+  },
+  {
+    "number": 1268,
+    "title": "API docs: Add docs to Terraform backends",
+    "priority": "important-longterm",
+    "created": "2021-11-08"
+  },
+  {
+    "number": 1313,
+    "title": "Add more documentation about how to work with existing resources (import/alteration)",
+    "priority": "important-longterm",
+    "created": "2021-11-17"
+  },
+  {
+    "number": 1406,
+    "title": "Docs: Add note about `synth` being common term in CDK ecosystem",
+    "priority": "important-longterm",
+    "created": "2021-12-10"
+  },
+  {
+    "number": 1443,
+    "title": "Document data access for modules",
+    "priority": "important-longterm",
+    "created": "2022-01-03"
+  },
+  {
+    "number": 1620,
+    "title": "cdktf get - jsii compilation failed - using terraform-google-modules/iam/google",
+    "priority": "backlog",
+    "created": "2022-03-13"
+  },
+  {
+    "number": 1631,
+    "title": "Make TerraformHclModule more beginner friendly — Request for docs",
+    "priority": "important-longterm",
+    "created": "2022-03-21"
+  },
+  {
+    "number": 1659,
+    "title": "Can Not Deref Tags from another Object during creation",
+    "priority": "backlog",
+    "created": "2022-03-25"
+  },
+  {
+    "number": 1682,
+    "title": "Typescript examples fail standard code analysis regarding constructor side-effects",
+    "priority": "backlog",
+    "created": "2022-04-01"
+  },
+  {
+    "number": 1829,
+    "title": "Docs: Make clear that `Stack.dependsOn` does not create a depedency between stacks (`addDependency` does)",
+    "priority": "important-longterm",
+    "created": "2022-05-30"
+  },
+  {
+    "number": 2071,
+    "title": "Use DataSources in the examples where possible",
+    "priority": "important-longterm",
+    "created": "2022-08-26"
+  },
+  {
+    "number": 2072,
+    "title": "Create examples using modules",
+    "priority": "important-longterm",
+    "created": "2022-08-26"
+  },
+  {
+    "number": 2109,
+    "title": "Explain synth vs execution time on Tokens page",
+    "priority": "important-longterm",
+    "created": "2022-09-13"
+  },
+  {
+    "number": 2114,
+    "title": "Improve TerraformVariable docs to mention stringValue, numberValue, etc",
+    "priority": "important-longterm",
+    "created": "2022-09-13"
+  },
+  {
+    "number": 2121,
+    "title": "Add docstrings for setters and getters in generated bindings as well",
+    "priority": "backlog",
+    "created": "2022-09-16"
+  },
+  {
+    "number": 2129,
+    "title": "Add Github Action for PRs that updates API docs (instead of precommit hook)",
+    "priority": "backlog",
+    "created": "2022-09-16"
+  },
+  {
+    "number": 2235,
+    "title": "Inconsistent UX for multi-stack cdktf commands",
+    "priority": "important-longterm",
+    "created": "2022-10-31"
+  },
+  {
+    "number": 2298,
+    "title": "Read `Token.nullValue()` snippet from documentation example",
+    "priority": "backlog",
+    "created": "2022-11-16"
+  },
+  {
+    "number": 2334,
+    "title": "Inconsistent behaviour of `dependsOn` if set via initial resource config vs. via `resource.dependsOn`",
+    "priority": "important-longterm",
+    "created": "2022-11-22"
+  },
+  {
+    "number": 2511,
+    "title": "Document how to use escape hatch with lists",
+    "priority": "important-longterm",
+    "created": "2023-01-18"
+  },
+  {
+    "number": 2514,
+    "title": "Improve Golang template & docs to include `defer jsii.Close()` cleanup call",
+    "priority": "none",
+    "created": "2023-01-18"
+  },
+  {
+    "number": 2515,
+    "title": "Document how to pass a `provider` to a resource",
+    "priority": "important-longterm",
+    "created": "2022-12-29"
+  },
+  {
+    "number": 2535,
+    "title": "Passing backend config through `TerraformVariable`s is not supported by Terraform",
+    "priority": "important-soon",
+    "created": "2023-01-25"
+  },
+  {
+    "number": 2548,
+    "title": "Improve list token access error message",
+    "priority": "important-longterm",
+    "created": "2023-01-27"
+  },
+  {
+    "number": 2568,
+    "title": "CDKTF support for multiple applications",
+    "priority": "backlog",
+    "created": "2023-02-01"
+  },
+  {
+    "number": 2578,
+    "title": "Documentation: Complex variables snippet not translated in `variables-and-outputs.mdx`",
+    "priority": "backlog",
+    "created": "2023-02-02"
+  },
+  {
+    "number": 2582,
+    "title": "Documentation: `cdktf.NullValue` example in `tokens.mdx` not sourced from examples",
+    "priority": "backlog",
+    "created": "2023-02-02"
+  },
+  {
+    "number": 2583,
+    "title": "Documentation: Examples in `unit-tests.mdx` not sourced from documentation",
+    "priority": "backlog",
+    "created": "2023-02-02"
+  },
+  {
+    "number": 2585,
+    "title": "Docs Snippet Tool only removes leading whitespace but not leading tabs",
+    "priority": "backlog",
+    "created": "2023-02-02"
+  },
+  {
+    "number": 2600,
+    "title": "CI: Validate that docs snippets sourced from examples are up-to-date",
+    "priority": "backlog",
+    "created": "2023-02-06"
+  },
+  {
+    "number": 2607,
+    "title": "Documentation: Remaining code snippets that are TypeScript only and not in CodeBlocks",
+    "priority": "backlog",
+    "created": "2023-02-07"
+  },
+  {
+    "number": 2613,
+    "title": "Documentation: Module outputs may require \"Token typecasting\" when passed e.g. into Terraform functions",
+    "priority": "important-longterm",
+    "created": "2023-02-08"
+  },
+  {
+    "number": 2710,
+    "title": "Guide: How to use custom constructs to solve governance problems while writing configuration",
+    "priority": "important-longterm",
+    "created": "2023-03-09"
+  },
+  {
+    "number": 2711,
+    "title": "Assets: Add documentation around TerraformCachedAsset",
+    "priority": "important-longterm",
+    "created": "2023-03-09"
+  },
+  {
+    "number": 2867,
+    "title": "(Concepts): new page to document Operators usage",
+    "priority": "important-longterm",
+    "created": "2023-05-09"
+  },
+  {
+    "number": 2871,
+    "title": "[Python] Testing.synth_scope is broken",
+    "priority": "important-longterm",
+    "created": "2023-05-11"
+  },
+  {
+    "number": 2915,
+    "title": "Conditionals: Add documentation page or section",
+    "priority": "backlog",
+    "created": "2023-06-02"
+  },
+  {
+    "number": 2945,
+    "title": "Add typed enums and inlined docs in CDKTF and related providers",
+    "priority": "backlog",
+    "created": "2023-06-14"
+  },
+  {
+    "number": 2995,
+    "title": "API Reference Docs: Python API docs cause my browser to hang on less powerful machines",
+    "priority": "backlog",
+    "created": "2023-07-07"
+  },
+  {
+    "number": 3032,
+    "title": "[Notice] Provider documentation on registry.terraform.io",
+    "priority": "none",
+    "created": "2023-07-25"
+  },
+  {
+    "number": 3042,
+    "title": "Documentation: Constructs page scope text not in alignment with code",
+    "priority": "important-soon",
+    "created": "2023-08-01"
+  },
+  {
+    "number": 3071,
+    "title": "Missing import in the example of using `cdktf` for `typescript`",
+    "priority": "important-longterm",
+    "created": "2023-08-13"
+  },
+  {
+    "number": 3095,
+    "title": "Display correct data format inside document",
+    "priority": "important-longterm",
+    "created": "2023-08-18"
+  },
+  {
+    "number": 3189,
+    "title": "Provider docs: event bridge docs not updated for ts",
+    "priority": "none",
+    "created": "2023-10-13"
+  },
+  {
+    "number": 3292,
+    "title": "hcl2cdk: example is broken",
+    "priority": "backlog",
+    "created": "2023-11-27"
+  },
+  {
+    "number": 3436,
+    "title": "cdktf-go: Error when following the examples in the documentation",
+    "priority": "none",
+    "created": "2024-01-18"
+  },
+  {
+    "number": 3527,
+    "title": "cdktf-go: CDK for Terraform Go import block",
+    "priority": "none",
+    "created": "2024-02-28"
+  },
+  {
+    "number": 3539,
+    "title": "CDKTF: Support `-refresh=false` on plan/diff and apply",
+    "priority": "none",
+    "created": "2024-03-07"
+  },
+  {
+    "number": 3571,
+    "title": "TerraformVariable: unclear how to use validation conditions in python",
+    "priority": "none",
+    "created": "2024-03-30"
+  },
+  {
+    "number": 3615,
+    "title": "COMPONENT: Running terraform --reconfigure --upgrade through cdktf",
+    "priority": "important-longterm",
+    "created": "2024-05-06"
+  },
+  {
+    "number": 3627,
+    "title": "COMPONENT: example for iterators on complex lists",
+    "priority": "none",
+    "created": "2024-05-19"
+  },
+  {
+    "number": 3637,
+    "title": "CDKTF: AWS WAFv2 rule statement changed to snake case, yet documentation remained in camel case",
+    "priority": "none",
+    "created": "2024-05-29"
+  },
+  {
+    "number": 3681,
+    "title": "NS1 Record creation",
+    "priority": "none",
+    "created": "2024-07-22"
+  },
+  {
+    "number": 3713,
+    "title": "DynamicListTerraformIterator: Sets of more than one object unhandled",
+    "priority": "none",
+    "created": "2024-08-25"
+  },
+  {
+    "number": 3805,
+    "title": "Constructs: Navigation index needed",
+    "priority": "none",
+    "created": "2025-01-22"
+  }
+]

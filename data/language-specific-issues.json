@@ -1,0 +1,210 @@
+{
+  "number": 432,
+  "title": "More examples using inheritance in Python for CDKTF",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 705,
+  "title": "~Unable to initialize cdktf project in pycharm with venv activated",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 728,
+  "title": "fallback to hashicorp namespace if none is passed in go provider generation",
+  "lang": [
+    "language/golang"
+  ]
+}
+{
+  "number": 1479,
+  "title": "Warnings the first time synthesizing C# projects: \"Parameter 'config' has no matching param tag...\"",
+  "lang": [
+    "language/c#"
+  ]
+}
+{
+  "number": 1660,
+  "title": "Support ECMAScript modules (ESM) in CDKTF projects",
+  "lang": [
+    "language/typescript"
+  ]
+}
+{
+  "number": 1898,
+  "title": "Azurerm first experience with c# dotnet and typescript",
+  "lang": [
+    "language/c#"
+  ]
+}
+{
+  "number": 1975,
+  "title": "AutoscalingGroup mixed_instances_policy override cannot take a dict as value (python)",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 2000,
+  "title": "Add Snapshot testing support for languages other than Typescript",
+  "lang": [
+    "language/python",
+    "language/java",
+    "language/golang",
+    "language/c#"
+  ]
+}
+{
+  "number": 2041,
+  "title": "Remove `replace` directive from Go examples (add on-demand when running in CI instead)",
+  "lang": [
+    "language/golang"
+  ]
+}
+{
+  "number": 2146,
+  "title": "[Notice] Moving pre-built providers to the `cdktf` Github organization",
+  "lang": [
+    "language/golang"
+  ]
+}
+{
+  "number": 2281,
+  "title": "cdktf.Fn_Element method no longer accepts *[]*string",
+  "lang": [
+    "language/golang"
+  ]
+}
+{
+  "number": 2321,
+  "title": "cdktf tries to use pipenv even tho I have removed it from cdktf.json",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 2326,
+  "title": "pytest to_have_resource_with_properties not able to detect None",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 2340,
+  "title": "Java, missing required field error is unclear",
+  "lang": [
+    "language/java"
+  ]
+}
+{
+  "number": 2514,
+  "title": "Improve Golang template & docs to include `defer jsii.Close()` cleanup call",
+  "lang": [
+    "language/golang"
+  ]
+}
+{
+  "number": 2578,
+  "title": "Documentation: Complex variables snippet not translated in `variables-and-outputs.mdx`",
+  "lang": [
+    "language/python",
+    "language/java",
+    "language/c#"
+  ]
+}
+{
+  "number": 2641,
+  "title": "Convert breaking long lines into multiple causes compilation issues in python",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 2669,
+  "title": "`azurerm` provider: Naming inconsistency with the `private_ip_address_allocation` property of the `NetworkInterfaceIpConfiguration` Class",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 2681,
+  "title": "Python - provider argument dict keys changed to lower-case with underscores",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 2759,
+  "title": "Re-enable CI for Java Gradle example",
+  "lang": [
+    "language/java"
+  ]
+}
+{
+  "number": 2800,
+  "title": "Convert: Nested named structs are not properly addressed (JSII upstream issue)",
+  "lang": [
+    "language/python",
+    "language/golang",
+    "language/c#"
+  ]
+}
+{
+  "number": 2835,
+  "title": "Allow partial PyPi installs for cdktf-cdktf-provider-aws",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 2838,
+  "title": "Add `python-poetry` to `cdktf-cli` built-in templates",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 3019,
+  "title": "Improvements to C# Ergonomics",
+  "lang": [
+    "language/c#"
+  ]
+}
+{
+  "number": 3061,
+  "title": "Library: improve debugging for untyped languages and incorrect naming",
+  "lang": [
+    "language/python"
+  ]
+}
+{
+  "number": 3408,
+  "title": "Fn.Strcontains() produces error in C#",
+  "lang": [
+    "language/c#"
+  ]
+}
+{
+  "number": 3436,
+  "title": "cdktf-go: Error when following the examples in the documentation",
+  "lang": [
+    "language/golang"
+  ]
+}
+{
+  "number": 3546,
+  "title": "ReplaceTriggeredBy: Still not working in Golang",
+  "lang": [
+    "language/golang"
+  ]
+}
+{
+  "number": 3547,
+  "title": "Module names/import paths: issue with main.js",
+  "lang": [
+    "language/typescript"
+  ]
+}

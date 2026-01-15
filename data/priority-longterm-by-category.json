@@ -1,0 +1,460 @@
+[
+  {
+    "category": "Other",
+    "count": 113,
+    "issues": [
+      {
+        "number": 231,
+        "title": "Transform Modules to Constructs"
+      },
+      {
+        "number": 237,
+        "title": "API to interact with terraform cli"
+      },
+      {
+        "number": 294,
+        "title": "State locking and how to handle it"
+      },
+      {
+        "number": 304,
+        "title": "DOC: is there any API/DOC for providers maintainer to support terraform-cdk?"
+      },
+      {
+        "number": 435,
+        "title": "Making cdktf dynamic"
+      },
+      {
+        "number": 526,
+        "title": "Improve cdktf upgrade documentation."
+      },
+      {
+        "number": 558,
+        "title": "Testing Modules and Providers"
+      },
+      {
+        "number": 575,
+        "title": "Align Data Source Names with Resource Name Schema"
+      },
+      {
+        "number": 660,
+        "title": "Custom Data Source"
+      },
+      {
+        "number": 661,
+        "title": "Custom Resources"
+      },
+      {
+        "number": 682,
+        "title": "Lifecycle Hooks"
+      },
+      {
+        "number": 694,
+        "title": "Init: allow users to choose between local and cloud when not setting a cloud "
+      },
+      {
+        "number": 707,
+        "title": "Providers should know \"allowed\" values where possible"
+      },
+      {
+        "number": 708,
+        "title": "Helper for using local files"
+      },
+      {
+        "number": 728,
+        "title": "fallback to hashicorp namespace if none is passed in go provider generation"
+      },
+      {
+        "number": 775,
+        "title": "Support tainting a resource (or new -replace option)"
+      },
+      {
+        "number": 785,
+        "title": "Add Dependency on Custom Construct"
+      },
+      {
+        "number": 798,
+        "title": "Reduce/document differences between cdktf synth and running app directly"
+      },
+      {
+        "number": 804,
+        "title": "Public API for Terraform CLI / TF Cloud exec code"
+      },
+      {
+        "number": 824,
+        "title": "Provide Common Temporary Directory "
+      },
+      {
+        "number": 841,
+        "title": "Telemetry does not get send due to process.exit"
+      },
+      {
+        "number": 918,
+        "title": "How multiple team members can use terraform CDKTF Project in a shared way"
+      },
+      {
+        "number": 956,
+        "title": "Add specific example for using private Terraform modules to docs"
+      },
+      {
+        "number": 1093,
+        "title": "Design CDK for Terraform integration testing"
+      },
+      {
+        "number": 1096,
+        "title": "Placeholder: implement integration testing"
+      },
+      {
+        "number": 1104,
+        "title": "Design UX, APIs for procedurally driving CDKTF"
+      },
+      {
+        "number": 1115,
+        "title": "Error produced by cdktf get is not breaking docker build"
+      },
+      {
+        "number": 1124,
+        "title": "Test matchers suppress Terraform logs"
+      },
+      {
+        "number": 1216,
+        "title": "Docs need (security) guidance around `.terraform.lock.hcl`"
+      },
+      {
+        "number": 1268,
+        "title": "API docs: Add docs to Terraform backends"
+      },
+      {
+        "number": 1309,
+        "title": "Validate Terraform code on synth"
+      },
+      {
+        "number": 1313,
+        "title": "Add more documentation about how to work with existing resources (import/alteration)"
+      },
+      {
+        "number": 1315,
+        "title": "Rename the help file when running `cdk init` to markdown and/or have a .txt extension to the help file"
+      },
+      {
+        "number": 1349,
+        "title": "synth should fail if a second provider of the same type has no alias"
+      },
+      {
+        "number": 1356,
+        "title": "Edge Provider Test: Test passing an entire resource to a Terraform Output"
+      },
+      {
+        "number": 1406,
+        "title": "Docs: Add note about `synth` being common term in CDK ecosystem"
+      },
+      {
+        "number": 1443,
+        "title": "Document data access for modules"
+      },
+      {
+        "number": 1479,
+        "title": "Warnings the first time synthesizing C# projects: \"Parameter 'config' has no matching param tag...\""
+      },
+      {
+        "number": 1501,
+        "title": "Support nested collections and other "
+      },
+      {
+        "number": 1616,
+        "title": "Expose API to identify / find constructs in tree"
+      },
+      {
+        "number": 1626,
+        "title": "Skip generating empty interfaces for provider bindings"
+      },
+      {
+        "number": 1631,
+        "title": "Make TerraformHclModule more beginner friendly — Request for docs"
+      },
+      {
+        "number": 1639,
+        "title": "Telemetry: track CLI flags being used"
+      },
+      {
+        "number": 1641,
+        "title": "Resource FQN tokens aren't resolved in a user friendly way"
+      },
+      {
+        "number": 1644,
+        "title": "Option to disable creation of assets for local modules"
+      },
+      {
+        "number": 1734,
+        "title": "Improve init templates (get rid of string replacing)"
+      },
+      {
+        "number": 1799,
+        "title": "Init: Support all languages from existing terraform project"
+      },
+      {
+        "number": 1829,
+        "title": "Docs: Make clear that `Stack.dependsOn` does not create a depedency between stacks (`addDependency` does)"
+      },
+      {
+        "number": 1850,
+        "title": "Unit testing - toHaveResource() - found no resources instead"
+      },
+      {
+        "number": 1874,
+        "title": "Create GitHub action to create / destroy terraform cloud workspaces"
+      },
+      {
+        "number": 1875,
+        "title": "Represent all maps with generated classes"
+      },
+      {
+        "number": 1898,
+        "title": "Azurerm first experience with c# dotnet and typescript"
+      },
+      {
+        "number": 1923,
+        "title": "Terraform module input variables & typescript"
+      },
+      {
+        "number": 1991,
+        "title": "Make our init templates more robust against upstream version changes"
+      },
+      {
+        "number": 2031,
+        "title": "cdktf destroy with wildcard characters tries to destroy stacks that has not been deployed and can cause error"
+      },
+      {
+        "number": 2071,
+        "title": "Use DataSources in the examples where possible"
+      },
+      {
+        "number": 2072,
+        "title": "Create examples using modules"
+      },
+      {
+        "number": 2109,
+        "title": "Explain synth vs execution time on Tokens page"
+      },
+      {
+        "number": 2113,
+        "title": "Allow to ignore files from TerraformAsset"
+      },
+      {
+        "number": 2114,
+        "title": "Improve TerraformVariable docs to mention stringValue, numberValue, etc"
+      },
+      {
+        "number": 2143,
+        "title": "Unmet peer dependencies for the cli"
+      },
+      {
+        "number": 2157,
+        "title": "Unable to perform cdktf diff when using multiple stacks with inter-stack dependencies"
+      },
+      {
+        "number": 2164,
+        "title": "Re-enable `convertProject.test.ts` test"
+      },
+      {
+        "number": 2191,
+        "title": "CDKTF should check if the pre-built providers peer dependency matches the installed cdktf version"
+      },
+      {
+        "number": 2200,
+        "title": "Generate provider lock file before running terraform init"
+      },
+      {
+        "number": 2230,
+        "title": "Support upgrading all used providers at once via `cdktf provider upgrade`"
+      },
+      {
+        "number": 2235,
+        "title": "Inconsistent UX for multi-stack cdktf commands"
+      },
+      {
+        "number": 2246,
+        "title": "Support nested iteration (i.e. using `TerraformIterator.dynamic` inside `TerraformIterator.dynamic`)"
+      },
+      {
+        "number": 2334,
+        "title": "Inconsistent behaviour of `dependsOn` if set via initial resource config vs. via `resource.dependsOn`"
+      },
+      {
+        "number": 2340,
+        "title": "Java, missing required field error is unclear"
+      },
+      {
+        "number": 2437,
+        "title": "cdktf provider upgrade issues"
+      },
+      {
+        "number": 2438,
+        "title": "Add expect matcher for TerraformOutputs"
+      },
+      {
+        "number": 2470,
+        "title": "Improve debugging by special debugging constructs / functions"
+      },
+      {
+        "number": 2473,
+        "title": "Synth changing TerraformVariable map keys to snake case"
+      },
+      {
+        "number": 2488,
+        "title": "Install cdktf-cli as part of TS template instead of relying on global installation"
+      },
+      {
+        "number": 2490,
+        "title": "cdktf-init typescript template general QOL improvements"
+      },
+      {
+        "number": 2511,
+        "title": "Document how to use escape hatch with lists"
+      },
+      {
+        "number": 2513,
+        "title": "Support planning a destroy via `cdktf-cli`"
+      },
+      {
+        "number": 2515,
+        "title": "Document how to pass a `provider` to a resource"
+      },
+      {
+        "number": 2518,
+        "title": "Testing: Assert modules being present"
+      },
+      {
+        "number": 2548,
+        "title": "Improve list token access error message"
+      },
+      {
+        "number": 2613,
+        "title": "Documentation: Module outputs may require \"Token typecasting\" when passed e.g. into Terraform functions"
+      },
+      {
+        "number": 2641,
+        "title": "Convert breaking long lines into multiple causes compilation issues in python"
+      },
+      {
+        "number": 2662,
+        "title": "Cross Stack Reference Not Working with Modules"
+      },
+      {
+        "number": 2710,
+        "title": "Guide: How to use custom constructs to solve governance problems while writing configuration"
+      },
+      {
+        "number": 2711,
+        "title": "Assets: Add documentation around TerraformCachedAsset"
+      },
+      {
+        "number": 2746,
+        "title": "cdktf Python - Expose version via Python API"
+      },
+      {
+        "number": 2800,
+        "title": "Convert: Nested named structs are not properly addressed (JSII upstream issue)"
+      },
+      {
+        "number": 2820,
+        "title": "Convert: Type Coercion adds extra cast due to race condition (variables not being pre-populated)"
+      },
+      {
+        "number": 2824,
+        "title": "Convert: Golang has wrong casing (lower case letters for attributes)"
+      },
+      {
+        "number": 2855,
+        "title": "Error when trying to create a common base class for AWS Provider"
+      },
+      {
+        "number": 2867,
+        "title": "(Concepts): new page to document Operators usage"
+      },
+      {
+        "number": 2871,
+        "title": "[Python] Testing.synth_scope is broken"
+      },
+      {
+        "number": 2877,
+        "title": "Inconsistent behaviour with variables from Terraform Cloud"
+      },
+      {
+        "number": 2892,
+        "title": "Allow skipping bugged resources, or allowlist used resources for the imported provider."
+      },
+      {
+        "number": 2910,
+        "title": "hcl2cdk: getExpressionAst fails with regex strings due to escaping"
+      },
+      {
+        "number": 2912,
+        "title": "hcl2cdk: produces incorrect typescript with mix of quoted and unquoted values"
+      },
+      {
+        "number": 2919,
+        "title": "cdktf-cli: terraform variables passed through --var flag and inter-stack dependencies don't interface nicely"
+      },
+      {
+        "number": 2976,
+        "title": "CDKTF: Cross stack dependencies fail if placed within a wrapper construct."
+      },
+      {
+        "number": 2985,
+        "title": "Convert: Some types are typed as `unknown` internally"
+      },
+      {
+        "number": 3061,
+        "title": "Library: improve debugging for untyped languages and incorrect naming"
+      },
+      {
+        "number": 3071,
+        "title": "Missing import in the example of using `cdktf` for `typescript`"
+      },
+      {
+        "number": 3095,
+        "title": "Display correct data format inside document"
+      },
+      {
+        "number": 3130,
+        "title": "Module generation for boolean variable should also accept `IResolvable`"
+      },
+      {
+        "number": 3168,
+        "title": "cdktf provider add --force-remote"
+      },
+      {
+        "number": 3532,
+        "title": "lifecycle: replaceTriggeredBy should not be a string interpolation"
+      },
+      {
+        "number": 3538,
+        "title": "Testing: fullSynth generated incorrect stack is having incoming cross-stack references"
+      },
+      {
+        "number": 3546,
+        "title": "ReplaceTriggeredBy: Still not working in Golang"
+      },
+      {
+        "number": 3586,
+        "title": "CloudBackend: support environment variables like TF_CLOUD_ORGANIZATION"
+      },
+      {
+        "number": 3615,
+        "title": "COMPONENT: Running terraform --reconfigure --upgrade through cdktf"
+      },
+      {
+        "number": 3641,
+        "title": "Prebuild binary missing for platform linux"
+      },
+      {
+        "number": 3660,
+        "title": "Terraform Functions: issensitive function appears to be missing"
+      },
+      {
+        "number": 3674,
+        "title": "`cdktf convert` mangles string interpolation"
+      }
+    ]
+  }
+]

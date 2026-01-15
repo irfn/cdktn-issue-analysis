@@ -1,0 +1,80 @@
+{
+  "number": 660,
+  "title": "Custom Data Source"
+}
+{
+  "number": 661,
+  "title": "Custom Resources"
+}
+{
+  "number": 824,
+  "title": "Provide Common Temporary Directory "
+}
+{
+  "number": 1268,
+  "title": "API docs: Add docs to Terraform backends"
+}
+{
+  "number": 1501,
+  "title": "Support nested collections and other "
+}
+{
+  "number": 1626,
+  "title": "Skip generating empty interfaces for provider bindings"
+}
+{
+  "number": 1631,
+  "title": "Make TerraformHclModule more beginner friendly — Request for docs"
+}
+{
+  "number": 1641,
+  "title": "Resource FQN tokens aren't resolved in a user friendly way"
+}
+{
+  "number": 1829,
+  "title": "Docs: Make clear that `Stack.dependsOn` does not create a depedency between stacks (`addDependency` does)"
+}
+{
+  "number": 1875,
+  "title": "Represent all maps with generated classes"
+}
+{
+  "number": 2113,
+  "title": "Allow to ignore files from TerraformAsset"
+}
+{
+  "number": 2246,
+  "title": "Support nested iteration (i.e. using `TerraformIterator.dynamic` inside `TerraformIterator.dynamic`)"
+}
+{
+  "number": 2438,
+  "title": "Add expect matcher for TerraformOutputs"
+}
+{
+  "number": 2470,
+  "title": "Improve debugging by special debugging constructs / functions"
+}
+{
+  "number": 2473,
+  "title": "Synth changing TerraformVariable map keys to snake case"
+}
+{
+  "number": 2662,
+  "title": "Cross Stack Reference Not Working with Modules"
+}
+{
+  "number": 2746,
+  "title": "cdktf Python - Expose version via Python API"
+}
+{
+  "number": 2976,
+  "title": "CDKTF: Cross stack dependencies fail if placed within a wrapper construct."
+}
+{
+  "number": 3532,
+  "title": "lifecycle: replaceTriggeredBy should not be a string interpolation"
+}
+{
+  "number": 3586,
+  "title": "CloudBackend: support environment variables like TF_CLOUD_ORGANIZATION"
+}

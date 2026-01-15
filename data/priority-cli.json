@@ -1,0 +1,84 @@
+{
+  "number": 294,
+  "title": "State locking and how to handle it"
+}
+{
+  "number": 575,
+  "title": "Align Data Source Names with Resource Name Schema"
+}
+{
+  "number": 775,
+  "title": "Support tainting a resource (or new -replace option)"
+}
+{
+  "number": 804,
+  "title": "Public API for Terraform CLI / TF Cloud exec code"
+}
+{
+  "number": 841,
+  "title": "Telemetry does not get send due to process.exit"
+}
+{
+  "number": 1115,
+  "title": "Error produced by cdktf get is not breaking docker build"
+}
+{
+  "number": 1315,
+  "title": "Rename the help file when running `cdk init` to markdown and/or have a .txt extension to the help file"
+}
+{
+  "number": 1639,
+  "title": "Telemetry: track CLI flags being used"
+}
+{
+  "number": 1734,
+  "title": "Improve init templates (get rid of string replacing)"
+}
+{
+  "number": 1991,
+  "title": "Make our init templates more robust against upstream version changes"
+}
+{
+  "number": 2143,
+  "title": "Unmet peer dependencies for the cli"
+}
+{
+  "number": 2157,
+  "title": "Unable to perform cdktf diff when using multiple stacks with inter-stack dependencies"
+}
+{
+  "number": 2191,
+  "title": "CDKTF should check if the pre-built providers peer dependency matches the installed cdktf version"
+}
+{
+  "number": 2200,
+  "title": "Generate provider lock file before running terraform init"
+}
+{
+  "number": 2230,
+  "title": "Support upgrading all used providers at once via `cdktf provider upgrade`"
+}
+{
+  "number": 2437,
+  "title": "cdktf provider upgrade issues"
+}
+{
+  "number": 2488,
+  "title": "Install cdktf-cli as part of TS template instead of relying on global installation"
+}
+{
+  "number": 2513,
+  "title": "Support planning a destroy via `cdktf-cli`"
+}
+{
+  "number": 2855,
+  "title": "Error when trying to create a common base class for AWS Provider"
+}
+{
+  "number": 3615,
+  "title": "COMPONENT: Running terraform --reconfigure --upgrade through cdktf"
+}
+{
+  "number": 3641,
+  "title": "Prebuild binary missing for platform linux"
+}
