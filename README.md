@@ -98,6 +98,18 @@ See [Terraform-Upgrade-Issues.md](./Terraform-Upgrade-Issues.md) for full detail
 
 ## Analysis Documents
 
+### [Triage-Plan.md](./Triage-Plan.md)
+
+**Manual triage checklist** for migrating PRs and issues to cdk-terrain.
+
+- 9 PRs to review (4 priority, 5 other)
+- 13 issues to create immediately (Tier 1-3)
+- 8+ medium priority issues (Tier 4)
+- ~50 issues to verify before creating
+- ~10 issues to skip
+
+---
+
 ### [Top-10-Issues-Analysis.md](./Top-10-Issues-Analysis.md)
 
 Deep-dive analysis of the 10 highest priority issues.
@@ -284,6 +296,7 @@ See [Issues-Likely-Not-Needed.md](./Issues-Likely-Not-Needed.md) for detailed an
 ```
 ./issue-analysis/
 ├── README.md                         # This file
+├── Triage-Plan.md                    # Manual triage checklist
 ├── Top-10-Issues-Analysis.md         # Deep-dive on top 10 issues
 ├── Open-PRs-Analysis.md              # Open PRs analysis
 ├── Maintainers-Priority-Issues.md    # Priority-labeled issues
