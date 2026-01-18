@@ -32,10 +32,11 @@
 
 | Tier | Focus Area | Count | Status |
 |------|------------|-------|--------|
-| **Tier 1** | Critical/Blocking | 4 | Migrate immediately |
-| **Tier 2** | Core Functionality | 10 | High priority |
-| **Tier 3** | Important Longterm | 7+ | Medium priority |
-| **Tier 4** | Backlog | ~50 | Lower priority |
+| **Tier 1** | Critical/Blocking | 3 | Migrate immediately |
+| **Tier 2** | TF Version Gap (1.7-1.10) | 3 | **High priority** |
+| **Tier 3** | Core Functionality | 7 | High priority |
+| **Tier 4** | Important Longterm | 8+ | Medium priority |
+| **Tier 5** | Backlog | ~50 | Lower priority |
 | **Skip** | Stale/Not Needed | ~60 | Verify or skip |
 
 ### Open PRs Summary
@@ -96,6 +97,23 @@ See [Terraform-Upgrade-Issues.md](./Terraform-Upgrade-Issues.md) for full detail
 ---
 
 ## Analysis Documents
+
+### [Top-10-Issues-Analysis.md](./Top-10-Issues-Analysis.md)
+
+Deep-dive analysis of the 10 highest priority issues.
+
+**Key findings:**
+- 1 issue has ready PR ([#3698](https://github.com/hashicorp/terraform-cdk/issues/3698) → [PR #3920](https://github.com/hashicorp/terraform-cdk/pull/3920))
+- 3 issues are Terraform version gap features (TF 1.7, 1.8, 1.10) - **high priority**
+- [#3803](https://github.com/hashicorp/terraform-cdk/issues/3803) is blocking provider generation
+
+**Implementation phases:**
+1. **Critical** - [#3698](https://github.com/hashicorp/terraform-cdk/issues/3698), [#3640](https://github.com/hashicorp/terraform-cdk/issues/3640), [#3803](https://github.com/hashicorp/terraform-cdk/issues/3803)
+2. **TF Version Gap** - [#3638](https://github.com/hashicorp/terraform-cdk/issues/3638) (TF 1.7), [#3686](https://github.com/hashicorp/terraform-cdk/issues/3686) (TF 1.8), [#3886](https://github.com/hashicorp/terraform-cdk/issues/3886) (TF 1.10)
+3. **Core Improvements** - [#2157](https://github.com/hashicorp/terraform-cdk/issues/2157) (multi-stack), [#1850](https://github.com/hashicorp/terraform-cdk/issues/1850) (testing)
+4. **Future** - [#237](https://github.com/hashicorp/terraform-cdk/issues/237) (programmatic API), [#3593](https://github.com/hashicorp/terraform-cdk/issues/3593) (OpenTofu)
+
+---
 
 ### [Open-PRs-Analysis.md](./Open-PRs-Analysis.md)
 
@@ -191,24 +209,30 @@ Issues with highest community engagement (by comment count).
 
 ### Tier 1: Critical (Migrate Immediately)
 
-Issues blocking users or strategically important for the fork.
+Issues blocking users or affecting all users.
 
 | # | Title | Reason | Comments |
 |---|-------|--------|----------|
 | [#3640](https://github.com/hashicorp/terraform-cdk/issues/3640) | punycode deprecation warning | `important-soon` - Affects all Node.js 21+ users | 9 |
-| [#3698](https://github.com/hashicorp/terraform-cdk/issues/3698) | HCL synth remote config bug | `important-soon` - Broken functionality | - |
-| [#3593](https://github.com/hashicorp/terraform-cdk/issues/3593) | OpenTofu support | **Strategic** - Key differentiator for fork | - |
+| [#3698](https://github.com/hashicorp/terraform-cdk/issues/3698) | HCL synth remote config bug | `important-soon` - Has PR ready | - |
 | [#3803](https://github.com/hashicorp/terraform-cdk/issues/3803) | Provider generation fails >0.20.1 | **Blocking** - Users can't generate providers | - |
 
-### Tier 2: High Priority (Core Functionality)
+### Tier 2: High Priority (Terraform Version Gap)
+
+Close the 8-version gap (TF 1.7-1.14). **Strategic priority for cdk-terrain.**
+
+| # | Title | Reason | Comments |
+|---|-------|--------|----------|
+| [#3638](https://github.com/hashicorp/terraform-cdk/issues/3638) | `removed` block support | TF 1.7 feature | - |
+| [#3686](https://github.com/hashicorp/terraform-cdk/issues/3686) | Provider functions support | TF 1.8 feature | - |
+| [#3886](https://github.com/hashicorp/terraform-cdk/issues/3886) | Ephemeral resources support | TF 1.10 feature | - |
+
+### Tier 3: High Priority (Core Functionality)
 
 Issues affecting core workflows and developer experience.
 
 | # | Title | Reason | Comments |
 |---|-------|--------|----------|
-| [#3686](https://github.com/hashicorp/terraform-cdk/issues/3686) | Provider functions support | TF 1.8 feature - Version gap | - |
-| [#3886](https://github.com/hashicorp/terraform-cdk/issues/3886) | Ephemeral resources support | TF 1.10 feature - Version gap | - |
-| [#3638](https://github.com/hashicorp/terraform-cdk/issues/3638) | `removed` block support | TF 1.7 feature - Version gap | - |
 | [#2157](https://github.com/hashicorp/terraform-cdk/issues/2157) | Multi-stack diff broken | Cross-stack bug - Major pain point | - |
 | [#2662](https://github.com/hashicorp/terraform-cdk/issues/2662) | Cross-stack refs with modules | Cross-stack bug | - |
 | [#2976](https://github.com/hashicorp/terraform-cdk/issues/2976) | Cross-stack deps in wrappers | Cross-stack bug | - |
@@ -217,7 +241,7 @@ Issues affecting core workflows and developer experience.
 | [#2871](https://github.com/hashicorp/terraform-cdk/issues/2871) | Python Testing.synth_scope broken | Testing + Python | - |
 | [#237](https://github.com/hashicorp/terraform-cdk/issues/237) | Programmatic API | 17 comments, `important-longterm` | 17 |
 
-### Tier 3: Medium Priority (Important Longterm)
+### Tier 4: Medium Priority (Important Longterm)
 
 Significant issues but not blocking core functionality.
 
@@ -230,8 +254,9 @@ Significant issues but not blocking core functionality.
 | [#1686](https://github.com/hashicorp/terraform-cdk/issues/1686) | Higher-level Constructs | 13 comments - Ecosystem growth | 13 |
 | [#3532](https://github.com/hashicorp/terraform-cdk/issues/3532) | replaceTriggeredBy bug | Lifecycle feature broken | - |
 | [#3641](https://github.com/hashicorp/terraform-cdk/issues/3641) | Linux prebuilt binary missing | Platform support | 7 |
+| [#3593](https://github.com/hashicorp/terraform-cdk/issues/3593) | OpenTofu support | Future consideration | 1 |
 
-### Tier 4: Lower Priority (Backlog)
+### Tier 5: Lower Priority (Backlog)
 
 Worth migrating but not urgent.
 
@@ -259,6 +284,7 @@ See [Issues-Likely-Not-Needed.md](./Issues-Likely-Not-Needed.md) for detailed an
 ```
 ./issue-analysis/
 ├── README.md                         # This file
+├── Top-10-Issues-Analysis.md         # Deep-dive on top 10 issues
 ├── Open-PRs-Analysis.md              # Open PRs analysis
 ├── Maintainers-Priority-Issues.md    # Priority-labeled issues
 ├── Terraform-Upgrade-Issues.md       # Upgrade/version issues
@@ -288,22 +314,27 @@ See [Issues-Likely-Not-Needed.md](./Issues-Likely-Not-Needed.md) for detailed an
 
 ### Immediate Actions
 1. **Merge/cherry-pick priority PRs** - [#3920](https://github.com/hashicorp/terraform-cdk/pull/3920), [#3928](https://github.com/hashicorp/terraform-cdk/pull/3928), [#3925](https://github.com/hashicorp/terraform-cdk/pull/3925), [#3934](https://github.com/hashicorp/terraform-cdk/pull/3934)
-2. **Create Tier 1 issues in cdk-terrain** - 4 critical/blocking issues
-3. **Address Terraform version gap** - Support TF 1.7+ features (removed block, provider functions, ephemeral resources)
-4. **Implement OpenTofu support** ([#3593](https://github.com/hashicorp/terraform-cdk/issues/3593)) - Strategic differentiator for the fork
+2. **Create Tier 1 issues in cdk-terrain** - 3 critical/blocking issues
+3. **Fix provider generation** ([#3803](https://github.com/hashicorp/terraform-cdk/issues/3803)) - Users blocked on newer versions
 
-### Short-term
-5. **Fix cross-stack dependency bugs** ([#2157](https://github.com/hashicorp/terraform-cdk/issues/2157), [#2662](https://github.com/hashicorp/terraform-cdk/issues/2662), [#2976](https://github.com/hashicorp/terraform-cdk/issues/2976)) - Major pain point
-6. **Fix testing framework** ([#1850](https://github.com/hashicorp/terraform-cdk/issues/1850), [#3538](https://github.com/hashicorp/terraform-cdk/issues/3538)) - Developer experience
-7. **Set up documentation infrastructure** for migrated docs
+### Short-term (Terraform Version Gap)
+4. **Add `removed` block support** ([#3638](https://github.com/hashicorp/terraform-cdk/issues/3638)) - TF 1.7 feature
+5. **Add provider functions** ([#3686](https://github.com/hashicorp/terraform-cdk/issues/3686)) - TF 1.8 feature
+6. **Add ephemeral resources** ([#3886](https://github.com/hashicorp/terraform-cdk/issues/3886)) - TF 1.10 feature
 
-### Medium-term
-8. **Triage unprioritized issues** (165 issues) for relevance
-9. **Coordinate with JSII upstream** on blocked issues ([#2800](https://github.com/hashicorp/terraform-cdk/issues/2800))
-10. **Decide on Terraform Cloud support** - Affects ~7 issues
+### Medium-term (Core Improvements)
+7. **Fix cross-stack dependency bugs** ([#2157](https://github.com/hashicorp/terraform-cdk/issues/2157), [#2662](https://github.com/hashicorp/terraform-cdk/issues/2662), [#2976](https://github.com/hashicorp/terraform-cdk/issues/2976)) - Major pain point
+8. **Fix testing framework** ([#1850](https://github.com/hashicorp/terraform-cdk/issues/1850), [#3538](https://github.com/hashicorp/terraform-cdk/issues/3538)) - Developer experience
+9. **Set up documentation infrastructure** for migrated docs
+
+### Long-term
+10. **Triage unprioritized issues** (165 issues) for relevance
+11. **Coordinate with JSII upstream** on blocked issues ([#2800](https://github.com/hashicorp/terraform-cdk/issues/2800))
+12. **Consider OpenTofu support** ([#3593](https://github.com/hashicorp/terraform-cdk/issues/3593)) - After version gap is closed
 
 ### Notes
 - **4 PRs ready for merge** - Fix priority issues immediately
-- Total recommended migrations: ~70 issues (Tier 1-3)
+- **Terraform version gap is strategic priority** - 8 versions behind (TF 1.7-1.14)
+- Total recommended migrations: ~70 issues (Tier 1-4)
 - ~60 issues can likely be skipped or need verification first
 - ~165 unprioritized issues need triage
